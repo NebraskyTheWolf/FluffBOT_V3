@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group = 'eu.fluffici'
+version = '20240602070620-6c2ebaa'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation('tech.tablesaw:tablesaw-jsplot:0.38.1')
+    implementation('org.reflections:reflections:0.9.12')
+    compileOnly(project(':Api'))
+}

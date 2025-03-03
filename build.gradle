@@ -1,0 +1,99 @@
+import java.text.SimpleDateFormat
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath 'net.sf.proguard:proguard-gradle:6.2.2'
+    }
+}
+
+plugins {
+    id 'java'
+    id 'com.gorylenko.gradle-git-properties' version '2.4.2'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
+}
+
+group = 'eu.fluffici'
+version = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date()) + "-" + ('git rev-parse --short HEAD'.execute().text.trim())
+
+repositories {
+    mavenCentral()
+    maven {
+        name = "cogcomp"
+        url = "https://cogcomp.seas.upenn.edu/m2repo/"
+    }
+
+    maven {
+        name = "aksw"
+        url = "https://maven.aksw.org/repository/internal/"
+    }
+
+    jcenter()
+
+    maven {
+        name = "runarmc"
+        url = "https://maven.runarmc.net/public/"
+    }
+}
+
+dependencies {
+    implementation("net.dv8tion:JDA:5.0.0-beta.24")
+    implementation("com.squareup.okhttp3:okhttp:4.9.1")
+    implementation("org.json:json:20210307")
+    implementation 'com.google.code.gson:gson:2.10.1'
+    implementation 'com.google.guava:guava:32.1.3-jre'
+
+    implementation 'org.jfree:jfreechart:1.5.3'
+    implementation group: 'org.yaml', name: 'snakeyaml', version: '2.2'
+
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+    implementation 'com.pusher:pusher-java-client:2.4.2'
+    implementation('nz.ac.waikato.cms.weka:weka-stable:3.8.6')
+
+    runtimeOnly 'com.github.fommil.netlib:netlib-native_ref-linux-x86_64:1.1'
+    runtimeOnly 'com.github.fommil.netlib:netlib-native_system-linux-x86_64:1.1'
+
+    implementation 'org.lwjgl:lwjgl:3.2.3'
+    runtimeOnly 'org.lwjgl:lwjgl:3.2.3:natives-windows'
+
+    implementation(group: 'redis.clients', name: 'jedis', version: '2.9.0')
+
+    implementation 'org.telegram:telegrambots-longpolling:7.4.2'
+    implementation 'org.telegram:telegrambots-webhook:7.4.2'
+    implementation 'org.telegram:telegrambots-client:7.4.2'
+    implementation 'org.telegram:telegrambots-extensions:7.4.2'
+
+    implementation 'com.pusher:pusher-http-java:1.3.3'
+    implementation 'org.jsoup:jsoup:1.15.3'
+
+    implementation(project(":Api"))
+    implementation(project(":Logger"))
+    implementation(project(":Config"))
+    implementation(project(":Database"))
+    implementation(project(":Language"))
+    implementation(project(":Bounce"))
+    implementation(project(":Benchmark"))
+}
+
+java {
+    sourceCompatibility = JavaVersion.VERSION_21
+    targetCompatibility = JavaVersion.VERSION_21
+}
+
+shadowJar {
+    archiveBaseName.set("FluffBOT")
+    archiveVersion.set('SNAPSHOT')
+
+    manifest {
+        attributes(
+                'Implementation-Title': 'FluffBOT V3',
+                'Implementation-Version': version,
+                'Built-by': 'see git.properties',
+                'Main-Class': 'eu.fluffici.startup.Start'
+        )
+    }
+}

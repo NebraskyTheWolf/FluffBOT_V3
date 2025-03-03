@@ -1,0 +1,27 @@
+plugins {
+    id 'java'
+}
+
+group = 'eu.fluffici.bot.api'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly("net.dv8tion:JDA:5.0.0-beta.24")
+    compileOnly 'com.google.code.gson:gson:2.10.1'
+
+    compileOnly 'org.projectlombok:lombok:1.18.32'
+    annotationProcessor 'org.projectlombok:lombok:1.18.32'
+
+    compileOnly 'com.pusher:pusher-java-client:2.4.2'
+
+    compileOnly 'org.jfree:jfreechart:1.5.3'
+
+    compileOnly(project(":Logger"))
+
+    implementation('org.reflections:reflections:0.10.2')
+    implementation 'org.telegram:telegrambots-longpolling:7.4.2'
+}

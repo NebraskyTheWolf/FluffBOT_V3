@@ -1,0 +1,15 @@
+{
+  "name": "",
+  "description": "",
+  "rarity": "COMMON",
+  "items": [
+    {
+      "name": "",
+      "description": "",
+      "rarity": "MYTHIC",
+      "quantity": 1,
+      "isRewardOnly": true,
+      "isAccessible": false
+    }
+  ]
+}

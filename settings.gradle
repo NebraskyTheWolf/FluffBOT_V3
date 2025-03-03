@@ -1,0 +1,9 @@
+rootProject.name = 'Fluffbots'
+include 'Database'
+include 'Api'
+include 'Logger'
+include 'Config'
+include 'Language'
+include 'Bounce'
+include 'Benchmark'
+

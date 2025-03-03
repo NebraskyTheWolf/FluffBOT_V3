@@ -1,0 +1,20 @@
+{
+  "decks": [
+    {
+      "slug": "classic",
+      "name": "Classic",
+      "default": true,
+      "price": 0,
+      "is_purchasable": false,
+      "rarity": "COMMON"
+    },
+    {
+      "slug": "dark_blue",
+      "name": "Dark Blue",
+      "default": false,
+      "price": 2000,
+      "is_purchasable": false,
+      "rarity": "RARE"
+    }
+  ]
+}
