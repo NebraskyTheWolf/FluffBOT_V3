@@ -149,7 +149,7 @@ public class BirthdateScheduler extends Task {
                             }
                         }
 
-                        TextChannel channel = guild.getTextChannelById(this.instance.getChannelConfig().getProperty("channel.birthday"));
+                        TextChannel channel = guild.getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.birthday"));
                         if (birthdayBean.getLastNotification() == null) {
                             try {
                                 birthdayBean.setLastNotification(new Timestamp(Instant.now().toEpochMilli()));

@@ -76,19 +76,19 @@ public class SchedulerManager {
             this.tasks.add(new UpdateAllInteraction(this.instance));
             this.tasks.add(new UpdateChannelMember(this.instance));
             this.tasks.add(new BirthdateScheduler(this.instance));
-            this.tasks.add(new CheckRewrites(this.instance));
             this.tasks.add(new UpdateStatistics(this.instance));
-
             this.tasks.add(new DeleteUnpaidChannels(this.instance));
             this.tasks.add(new ChannelDeletionNotice(this.instance));
-
-            this.tasks.add(new SendDailyStatistics(this.instance));
-            this.tasks.add(new SendReport(this.instance));
 
             this.tasks.add(new LockExpiredReminder());
             this.tasks.add(new NotifyReminder());
 
             this.tasks.add(new CheckMaintenanceStatus());
+
+            this.tasks.add(new CheckRewrites(this.instance));
+            this.tasks.add(new SendDailyStatistics(this.instance));
+            this.tasks.add(new SendReport(this.instance));
+
         }
     }
 

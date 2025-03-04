@@ -117,7 +117,7 @@ public class AntiScamManager extends ListenerAdapter {
             guild.getTextChannelById(antiScamFeature.getSettings().getLoggingChannel())
                     .sendMessageEmbeds(FurRaidDB.getInstance().getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("module.moderation.quarantined.content.title", member.getEffectiveName()), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED)
+                            .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("module.moderation.quarantined.content.title", member.getEffectiveName()), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                             .setDescription(
                                     """
                                             **Message content**:
@@ -165,14 +165,16 @@ public class AntiScamManager extends ListenerAdapter {
         Response response = this.client.newCall(request).execute();
         if (response.isSuccessful()) {
             try {
-                RequestModerationCheck check = new Gson().fromJson(response.body().string(), RequestModerationCheck.class);
-                if (check.isStatus()) {
-                    if (check.isScam()) {
-                        return true;
-                    } else {
-                        FurRaidDB.getInstance().getLogger().debug("URL: %s is cleared. this URL is not flagged in the registry.", url);
-                    }
-                }
+                /** TODO: Need workaround, the private API has been deleted.
+                 *  RequestModerationCheck check = new Gson().fromJson(response.body().string(), RequestModerationCheck.class);
+                 *                 if (check.isStatus()) {
+                 *                     if (check.isScam()) {
+                 *                         return true;
+                 *                     } else {
+                 *                         FurRaidDB.getInstance().getLogger().debug("URL: %s is cleared. this URL is not flagged in the registry.", url);
+                 *                     }
+                 *                 }
+                 */
             } catch (Exception e) {
                 e.printStackTrace();
             }

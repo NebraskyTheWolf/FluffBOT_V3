@@ -120,7 +120,7 @@ public class InviteManager extends ListenerAdapter {
                     guild.getTextChannelById(inviteTrackerFeature.getSettings().getTrackingChannel())
                             .sendMessageEmbeds(FurRaidDB.getInstance().getEmbed()
                                     .simpleAuthoredEmbed()
-                                    .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.invite.used", event.getUser().getGlobalName()), "https://frdb.fluffici.eu", ICON_QUESTION_MARK)
+                                    .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.invite.used", event.getUser().getGlobalName()), "https://frdb.fluffici.eu", ICON_QUESTION_MARK.getUrl())
                                     .setThumbnail(event.getUser().getAvatarUrl())
                                     .setDescription(FurRaidDB.getInstance().getLanguageManager().get("common.invite.used.desc",
                                             event.getUser().getAsMention(), event.getUser().getGlobalName(),

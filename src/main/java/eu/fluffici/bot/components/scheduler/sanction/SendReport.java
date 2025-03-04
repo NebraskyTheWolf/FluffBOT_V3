@@ -108,7 +108,7 @@ public class SendReport extends Task {
 
                         if (messageChart.getLeft() && voiceChart.getLeft() && guildEngagement.getLeft()) {
                             this.instance.getJda().getGuildById(this.instance.getDefaultConfig().getProperty("main.guild"))
-                                    .getTextChannelById(this.instance.getChannelConfig().getProperty("channel.report"))
+                                    .getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.report"))
                                     .sendMessageEmbeds(
                                             this.instance.getEmbed()
                                                     .simpleAuthoredEmbed()
@@ -138,7 +138,7 @@ public class SendReport extends Task {
                                     .queue();
                         } else {
                             this.instance.getJda().getGuildById(this.instance.getDefaultConfig().getProperty("main.guild"))
-                                    .getTextChannelById(this.instance.getChannelConfig().getProperty("channel.report"))
+                                    .getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.report"))
                                     .sendMessageEmbeds(
                                             this.instance.getEmbed()
                                                     .simpleAuthoredEmbed()
@@ -168,7 +168,7 @@ public class SendReport extends Task {
 
                         if (messageChart.getLeft() && voiceChart.getLeft() && guildEngagement.getLeft()) {
                             this.instance.getJda().getGuildById(this.instance.getDefaultConfig().getProperty("main.guild"))
-                                    .getTextChannelById(this.instance.getChannelConfig().getProperty("channel.report"))
+                                    .getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.report"))
                                     .sendMessageEmbeds(
                                             this.instance.getEmbed()
                                                     .simpleAuthoredEmbed()
@@ -198,7 +198,7 @@ public class SendReport extends Task {
                                     .queue();
                         } else {
                             this.instance.getJda().getGuildById(this.instance.getDefaultConfig().getProperty("main.guild"))
-                                    .getTextChannelById(this.instance.getChannelConfig().getProperty("channel.report"))
+                                    .getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.report"))
                                     .sendMessageEmbeds(
                                             this.instance.getEmbed()
                                                     .simpleAuthoredEmbed()
@@ -216,7 +216,7 @@ public class SendReport extends Task {
                     Pair<Boolean, ReportNotification> result = this.instance.getGameServiceManager().hasActiveReport(ReportNotification.ReportType.MONTHLY_MESSAGES);
                     if (!result.getLeft()) {
                         EmbedBuilder embed = this.instance.getEmbed().simpleAuthoredEmbed();
-                        embed.setAuthor("Měsíční vyhodnocení - Nejaktivnější členové", "https://fluffici.eu", ICON_MEDAL);
+                        embed.setAuthor("Měsíční vyhodnocení - Nejaktivnější členové", "https://fluffici.eu", ICON_MEDAL.getUrl());
                         embed.setColor(Color.decode("#90EE90"));
                         embed.setTimestamp(Instant.now());
 
@@ -234,7 +234,7 @@ public class SendReport extends Task {
                             public void onAll(List<MessageLeaderboard> messageList) {
                                 String callbackId = GameId.generateId();
 
-                                TextChannel announcementChannel = instance.getJda().getTextChannelById(instance.getChannelConfig().getProperty("channel.announcement"));
+                                TextChannel announcementChannel = instance.getJda().getTextChannelById(instance.getDefaultConfig().getProperty("channel.announcement"));
                                 if (announcementChannel != null && announcementChannel.canTalk()) {
                                     PodiumGenerator podiumGenerator = new PodiumGenerator(instance.getLanguageManager(), new PodiumBuilder(PodiumType.FULL, messageList));
                                     CompletableFuture<FileUpload> generatedProfile = CompletableFuture.supplyAsync(() -> podiumGenerator.generatePodium(callbackId));
@@ -256,7 +256,7 @@ public class SendReport extends Task {
                     Pair<Boolean, ReportNotification> result = this.instance.getGameServiceManager().hasActiveReport(ReportNotification.ReportType.PAYCHECK);
                     if (!result.getLeft()) {
                         EmbedBuilder embed = this.instance.getEmbed().simpleAuthoredEmbed();
-                        embed.setAuthor(this.instance.getLanguageManager().get("task.report.monthly.paycheck.title"), "https://fluffici.eu", ICON_CLOCK);
+                        embed.setAuthor(this.instance.getLanguageManager().get("task.report.monthly.paycheck.title"), "https://fluffici.eu", ICON_CLOCK.getUrl());
                         embed.setColor(Color.decode("#90EE90"));
                         embed.setTimestamp(Instant.now());
                         embed.setDescription(this.instance.getLanguageManager().get("task.report.monthly.paycheck.description"));
@@ -294,7 +294,7 @@ public class SendReport extends Task {
 
                         embed.setDescription(String.join("\n", results));
 
-                        TextChannel staffChannel = instance.getJda().getTextChannelById(instance.getChannelConfig().getProperty("channel.staff"));
+                        TextChannel staffChannel = instance.getJda().getTextChannelById(instance.getDefaultConfig().getProperty("channel.staff"));
                         if (staffChannel != null && staffChannel.canTalk()) {
                             staffChannel.sendMessageEmbeds(embed.build()).queue();
                         }

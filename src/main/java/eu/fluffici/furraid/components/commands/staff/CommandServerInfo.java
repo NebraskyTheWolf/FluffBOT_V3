@@ -55,7 +55,7 @@ public class CommandServerInfo extends FCommand {
 
             EmbedBuilder guildInformation = this.getEmbed().simpleAuthoredEmbed();
             guildInformation.setColor((isGloballyBlacklisted ? Color.RED : Color.green));
-            guildInformation.setAuthor((isGloballyBlacklisted ? "This server is blacklisted" : guild.getName()), "https://frdb.fluffici.eu", (isGloballyBlacklisted ? ICON_ALERT : ICON_CHECKS));
+            guildInformation.setAuthor((isGloballyBlacklisted ? "This server is blacklisted" : guild.getName()), "https://frdb.fluffici.eu", (isGloballyBlacklisted ? ICON_ALERT.getUrl() : ICON_CHECKS.getUrl()));
             guildInformation.setThumbnail(guild.getIconUrl());
             if (guild.getBannerUrl() != null)
                 guildInformation.setImage(guild.getBannerUrl());

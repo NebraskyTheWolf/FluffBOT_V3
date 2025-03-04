@@ -82,7 +82,7 @@ public class CommandRoles extends Command {
 
             interaction.replyEmbeds(this.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(this.getLanguageManager().get("command.roles.roles.list"), "https://fluffici.eu", ICON_NOTE)
+                    .setAuthor(this.getLanguageManager().get("command.roles.roles.list"), "https://fluffici.eu", ICON_NOTE.getUrl())
                     .setDescription(rolesList.toString())
                     .setTimestamp(Instant.now())
                     .build()

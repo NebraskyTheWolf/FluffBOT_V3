@@ -39,7 +39,7 @@ public class CommandSupport extends FCommand {
     public void execute(CommandInteraction interaction, GuildSettings settings) {
         interaction.replyEmbeds(this.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.getLanguageManager().get("command.support.title"), "https://frdb.fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(this.getLanguageManager().get("command.support.title"), "https://frdb.fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(this.getLanguageManager().get("command.support.description"))
                 .setTimestamp(Instant.now())
                 .setColor(Color.ORANGE)

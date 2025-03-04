@@ -148,7 +148,7 @@ public class GuildUserLeftListener extends ListenerAdapter {
             } else {
                 TextChannel ticketChannel = event.getGuild().getTextChannelById(ticket.getChannelId());
                 ticketChannel.sendMessageEmbeds(this.instance.getEmbed().simpleAuthoredEmbed()
-                        .setAuthor(this.instance.getLanguageManager().get("event.left.ticket.title", event.getUser().getEffectiveName()), "https://frdb.fluffici.eu", ICON_USER_X)
+                        .setAuthor(this.instance.getLanguageManager().get("event.left.ticket.title", event.getUser().getEffectiveName()), "https://frdb.fluffici.eu", ICON_USER_X.getUrl())
                         .setColor(Color.RED)
                         .setFooter(event.getMember().getId())
                         .setThumbnail((event.getUser().getAvatarUrl() != null ? event.getUser().getAvatarUrl() : event.getUser().getDefaultAvatarUrl()))
@@ -170,7 +170,7 @@ public class GuildUserLeftListener extends ListenerAdapter {
         FurRaidConfig.WelcomingFeature welcomingFeature = guildSettings.getConfig().getFeatures().getWelcoming();
 
         goodbyeChannel.sendMessageEmbeds(this.instance.getEmbed().simpleAuthoredEmbed()
-                .setAuthor(this.instance.getLanguageManager().get("event.left.goodbye.title", event.getUser().getEffectiveName()), "https://frdb.fluffici.eu", ICON_USER_X)
+                .setAuthor(this.instance.getLanguageManager().get("event.left.goodbye.title", event.getUser().getEffectiveName()), "https://frdb.fluffici.eu", ICON_USER_X.getUrl())
                 .setColor(Color.RED)
                 .setDescription(welcomingFeature.getSettings().getLeftMessage())
                 .setFooter(event.getMember().getId())

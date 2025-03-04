@@ -266,11 +266,11 @@ public class UserMessageEvent {
     private void handleLogging(@NotNull Message message, @NotNull OffenceType offenceType) {
         FluffBOT instance = FluffBOT.getInstance();
         Guild mainGuild = instance.getJda().getGuildById(instance.getDefaultConfig().getProperty("main.guild"));
-        TextChannel staffChannel = mainGuild.getTextChannelById(instance.getChannelConfig().getProperty("channel.staff"));
+        TextChannel staffChannel = mainGuild.getTextChannelById(instance.getDefaultConfig().getProperty("channel.staff"));
 
         EmbedBuilder telegramLog = instance.getEmbed().simpleAuthoredEmbed();
         telegramLog.setTimestamp(Instant.now());
-        telegramLog.setAuthor(instance.getLanguageManager().get("common.telegram.auto_mod.title", offenceType.name().replaceAll("_", " ")), "https://fluffici.eu", ICON_ALERT);
+        telegramLog.setAuthor(instance.getLanguageManager().get("common.telegram.auto_mod.title", offenceType.name().replaceAll("_", " ")), "https://fluffici.eu", ICON_ALERT.getUrl());
         telegramLog.setColor(Color.RED);
 
         telegramLog.setDescription(

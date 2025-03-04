@@ -43,7 +43,7 @@ public class CommandSetupTicket extends Command {
         if (interaction.getChannel() instanceof TextChannel textChannel) {
             textChannel.sendMessageEmbeds(this.getEmbed()
                     .simpleAuthoredEmbed()
-                            .setAuthor("Podpora", "https://fluffici.eu", ICON_QUESTION_MARK)
+                            .setAuthor("Podpora", "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                             .setColor(0x00FF00)
                             .setDescription(" K vytvoření ticketu zareaguj s <:ticket:1221209101544194149>")
                             .setFooter(interaction.getJDA().getSelfUser().getName(), interaction.getJDA().getSelfUser().getAvatarUrl())

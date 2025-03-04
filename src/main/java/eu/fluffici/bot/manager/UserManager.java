@@ -1795,7 +1795,7 @@ public class UserManager implements IUserManager {
             User target = this.instance.getJda().getUserById(user.getId());
             EmbedBuilder killMessage = this.instance.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(this.instance.getLanguageManager().get("common.player.death", target.getGlobalName()), "https://fluffici.eu", ICON_ALERT);
+                    .setAuthor(this.instance.getLanguageManager().get("common.player.death", target.getGlobalName()), "https://fluffici.eu", ICON_ALERT.getUrl());
 
             switch (deathInfo.getDeathType()) {
                 case PLAYER -> {
@@ -1813,7 +1813,7 @@ public class UserManager implements IUserManager {
 
             killMessage.setTimestamp(Instant.now());
             killMessage.setThumbnail(target.getAvatarUrl());
-            this.instance.getJda().getTextChannelById(this.instance.getChannelConfig().getProperty("channel.level")).sendMessageEmbeds(killMessage.build()).queue();
+            this.instance.getJda().getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.level")).sendMessageEmbeds(killMessage.build()).queue();
 
             this.respawn(user);
         } catch (Exception e) {

@@ -168,10 +168,10 @@ public abstract class Command extends ListenerAdapter {
     public MessageEmbed buildError(String description) {
         return this.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.getLanguageManager().get("common.error"), "https://fluffici.eu", ICON_ALERT_CIRCLE)
+                .setAuthor(this.getLanguageManager().get("common.error"), "https://fluffici.eu", ICON_ALERT_CIRCLE.getUrl())
                 .setDescription(description)
                 .setTimestamp(Instant.now())
-                .setFooter(this.getLanguageManager().get("common.error.footer"), ICON_QUESTION_MARK)
+                .setFooter(this.getLanguageManager().get("common.error.footer"), ICON_QUESTION_MARK.getUrl())
         .build();
     }
 
@@ -184,7 +184,7 @@ public abstract class Command extends ListenerAdapter {
     public MessageEmbed buildSuccess(String description) {
         return this.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.getLanguageManager().get("common.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                .setAuthor(this.getLanguageManager().get("common.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                 .setDescription(description)
                 .setTimestamp(Instant.now())
         .build();
@@ -201,11 +201,11 @@ public abstract class Command extends ListenerAdapter {
     public void sendLogging(Guild guild, String action, User author, User target) {
         guild.getTextChannelById("747872419091316848").sendMessageEmbeds(
                 this.embed.simpleAuthoredEmbed()
-                        .setAuthor(this.getLanguageManager().get("common.logging", author), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                        .setAuthor(this.getLanguageManager().get("common.logging", author), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                         .setDescription(action)
                         .addField("target", target.getEffectiveName(), true)
                         .setTimestamp(Instant.now())
-                        .setFooter(this.getLanguageManager().get("common.logging.footer"), ICON_QUESTION_MARK)
+                        .setFooter(this.getLanguageManager().get("common.logging.footer"), ICON_QUESTION_MARK.getUrl())
                         .build()
         ).queue();
     }

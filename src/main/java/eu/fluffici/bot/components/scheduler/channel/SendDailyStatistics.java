@@ -89,7 +89,7 @@ public class SendDailyStatistics extends Task {
 
                         TextChannel mainChannel = Objects.requireNonNull(instance.getJda()
                                         .getGuildById(instance.getDefaultConfig().getProperty("main.guild")))
-                                .getTextChannelById(instance.getChannelConfig().getProperty("channel.main"));
+                                .getTextChannelById(instance.getDefaultConfig().getProperty("channel.main"));
 
                         if (mainChannel != null) {
                             mainChannel.sendMessageEmbeds(boostState.getRight().build(), statisticMessage.build()).queue();
@@ -152,7 +152,7 @@ public class SendDailyStatistics extends Task {
 
         return instance.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.instance.getLanguageManager().get("task.statistics.boost.active"), "https://fluffici.eu", ICON_UNLOCK)
+                .setAuthor(this.instance.getLanguageManager().get("task.statistics.boost.active"), "https://fluffici.eu", ICON_UNLOCK.getUrl())
                 .setDescription(this.instance.getLanguageManager().get("task.statistics.boost.active.desc"))
                 .setFooter(this.instance.getLanguageManager().get("task.statistics.boost.footer"));
     }
@@ -162,7 +162,7 @@ public class SendDailyStatistics extends Task {
 
         return instance.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.instance.getLanguageManager().get("task.statistics.boost.none"), "https://fluffici.eu", ICON_ALERT)
+                .setAuthor(this.instance.getLanguageManager().get("task.statistics.boost.none"), "https://fluffici.eu", ICON_ALERT.getUrl())
                 .setDescription(this.instance.getLanguageManager().get("task.statistics.boost.none.desc"))
                 .setFooter(this.instance.getLanguageManager().get("task.statistics.boost.none.footer"));
     }
@@ -172,7 +172,7 @@ public class SendDailyStatistics extends Task {
 
         return instance.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.instance.getLanguageManager().get("task.statistics.boost.gathering"), "https://fluffici.eu", ICON_ALERT)
+                .setAuthor(this.instance.getLanguageManager().get("task.statistics.boost.gathering"), "https://fluffici.eu", ICON_ALERT.getUrl())
                 .setDescription(this.instance.getLanguageManager().get("task.statistics.boost.gathering.desc"))
                 .setFooter(this.instance.getLanguageManager().get("task.statistics.boost.gathering.footer"));
     }
@@ -182,7 +182,7 @@ public class SendDailyStatistics extends Task {
 
         return instance.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.instance.getLanguageManager().get("task.statistics.boost.inactive"), "https://fluffici.eu", ICON_LOCK)
+                .setAuthor(this.instance.getLanguageManager().get("task.statistics.boost.inactive"), "https://fluffici.eu", ICON_LOCK.getUrl())
                 .setDescription(this.instance.getLanguageManager().get("task.statistics.boost.inactive.desc"))
                 .setFooter(this.instance.getLanguageManager().get("task.statistics.boost.inactive.footer"));
     }

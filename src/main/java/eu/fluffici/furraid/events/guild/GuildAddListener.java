@@ -72,7 +72,7 @@ public class GuildAddListener extends ListenerAdapter {
         ));
 
         EmbedBuilder initialMessage = FurRaidDB.getInstance().getEmbed().simpleAuthoredEmbed();
-        initialMessage.setAuthor("FurRaidDB Bot", "https://frdb.fluffici.eu", ICON_MEDAL);
+        initialMessage.setAuthor("FurRaidDB Bot", "https://frdb.fluffici.eu", ICON_MEDAL.getUrl());
         initialMessage.setDescription("""
                 👋 **Hello! Thank you for inviting FurRaidDB to your server!**
 

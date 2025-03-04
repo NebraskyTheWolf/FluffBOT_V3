@@ -55,7 +55,7 @@ public class CheckSpammerUpdate extends Task {
             TextChannel alertChannel = guild.getTextChannelById(guildSettings.getLoggingChannel());
             if (alertChannel != null && alertChannel.canTalk(guild.getSelfMember())) {
                 EmbedBuilder embedBuilder = this.instance.getEmbed().simpleAuthoredEmbed();
-                embedBuilder.setAuthor(this.instance.getLanguageManager().get("check.spammer.title", triggered.getId()), "https://frdb.fluffici.eu", ICON_ALERT);
+                embedBuilder.setAuthor(this.instance.getLanguageManager().get("check.spammer.title", triggered.getId()), "https://frdb.fluffici.eu", ICON_ALERT.getUrl());
                 embedBuilder.setColor(Color.decode("#D70040"));
                 embedBuilder.setThumbnail(triggered.getAvatarUrl());
                 embedBuilder.setDescription(this.instance.getLanguageManager().get("check.spammer.desc"));

@@ -114,7 +114,7 @@ public class AchievementSelectMenu extends SelectMenu<StringSelectInteraction>  
     private void prepare(@NotNull List<Achievement> currentPageAchievements, User user, PaginationBuilder achievementPages) {
         currentPageAchievements.forEach(achievement -> {
             EmbedBuilder embedBuilder = new EmbedBuilder();
-            embedBuilder.setAuthor(this.getLanguageManager().get("common.achievement.title", user.getEffectiveName()), "https://fluffici.eu", ICON_MEDAL);
+            embedBuilder.setAuthor(this.getLanguageManager().get("common.achievement.title", user.getEffectiveName()), "https://fluffici.eu", ICON_MEDAL.getUrl());
             embedBuilder.setColor(Color.decode("#2F3136"));
 
             embedBuilder.setDescription(this.getLanguageManager().get("common.statistics.achievements", achievement.getParentCategory().getDisplayName()));

@@ -349,7 +349,7 @@ public class CommandClan extends Command {
             Message message = target.openPrivateChannel().complete().sendMessageEmbeds(
                     this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(currentClan.getTitle(), "https://fluffici.eu", ( currentClan.getIconURL() != null && !currentClan.getIconURL().isEmpty() ?  currentClan.getIconURL() : ICON_TRUCK))
+                            .setAuthor(currentClan.getTitle(), "https://fluffici.eu", ( currentClan.getIconURL() != null && !currentClan.getIconURL().isEmpty() ?  currentClan.getIconURL() : ICON_TRUCK.getUrl()))
                             .setTitle(this.getLanguageManager().get("common.clan.invited", interaction.getUser().getEffectiveName()))
                             .setDescription("**Description**\n\n" + currentClan.getDescription())
                             .build()
@@ -383,7 +383,7 @@ public class CommandClan extends Command {
 
         interaction.replyEmbeds(this.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.getLanguageManager().get("common.clan.information", currentClan.getTitle()), "https://fluffici.eu", (currentClan.getIconURL() != null && !currentClan.getIconURL().isEmpty() ? currentClan.getIconURL() : ICON_TRUCK))
+                .setAuthor(this.getLanguageManager().get("common.clan.information", currentClan.getTitle()), "https://fluffici.eu", (currentClan.getIconURL() != null && !currentClan.getIconURL().isEmpty() ? currentClan.getIconURL() : ICON_TRUCK.getUrl()))
                 .setDescription(this.getLanguageManager().get("common.clan.description", currentClan.getDescription()))
                 .addField(this.getLanguageManager().get("common.label.members"), String.join("\n", members), true)
                 .addField(this.getLanguageManager().get("common.label.prefix"), currentClan.getPrefix(), true)

@@ -80,7 +80,7 @@ public class CommandAchievement extends Command {
         );
 
         interaction.replyEmbeds(this.getEmbed().simpleAuthoredEmbed()
-                        .setAuthor(this.getLanguageManager().get("common.achievements"), "https://fluffici.eu",ICON_QUESTION_MARK)
+                        .setAuthor(this.getLanguageManager().get("common.achievements"), "https://fluffici.eu",ICON_QUESTION_MARK.getUrl())
                         .setDescription(this.getLanguageManager().get("common.select"))
                         .build())
                 .addActionRow(categories.build())

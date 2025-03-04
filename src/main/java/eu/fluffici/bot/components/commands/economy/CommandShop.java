@@ -172,7 +172,7 @@ public class CommandShop extends Command {
             CompletableFuture<FileUpload> generatedProfile = CompletableFuture.supplyAsync(() -> commandProfile.handleProfile(currentPlayer, currentUser, requestId, true));
             generatedProfile.whenComplete((fileUpload, throwable) -> interaction.replyEmbeds(getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(getLanguageManager().get("command.shop.profile.preview.title", currentUser.getEffectiveName()), "https://fluffici.eu", ICON_BOOK)
+                    .setAuthor(getLanguageManager().get("command.shop.profile.preview.title", currentUser.getEffectiveName()), "https://fluffici.eu", ICON_BOOK.getUrl())
                     .setImage("attachment://".concat(requestId.concat("_profile.png")))
                     .build()
             ).setContent("-# This profile is a preview of the skin ".concat(skin.getItemName()).concat(" • [Learn More](https://wiki.fluffici.eu)")).addFiles(fileUpload).setEphemeral(true).queue()).exceptionally(e -> {

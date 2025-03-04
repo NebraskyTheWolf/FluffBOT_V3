@@ -94,7 +94,7 @@ public class CommandData extends Command {
                             .queue(
                                     success -> {
                                         if (Objects.equals(success.getNonce(), requestId)) {
-                                            TextChannel loggingChannel = interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getChannelConfig().getProperty("channel.logging"));
+                                            TextChannel loggingChannel = interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getDefaultConfig().getProperty("channel.logging"));
                                             loggingChannel.sendMessageEmbeds(this.getEmbed()
                                                     .simpleAuthoredEmbed()
                                                             .setAuthor(interaction.getUser().getEffectiveName(), null, interaction.getUser().getEffectiveAvatarUrl())

@@ -101,7 +101,7 @@ public class CommandArtist extends Command {
                             if (channel != null && channel.canTalk(interaction.getGuild().getSelfMember()) && channel.getName().endsWith("-ticket")) {
                                 channel.sendMessageEmbeds(this.getEmbed()
                                             .simpleAuthoredEmbed()
-                                            .setAuthor(this.getLanguageManager().get("command.artist.accepted"), "https://fluffici.eu", ICON_CHECKS)
+                                            .setAuthor(this.getLanguageManager().get("command.artist.accepted"), "https://fluffici.eu", ICON_CHECKS.getUrl())
                                             .setDescription(this.getLanguageManager().get("command.artist.accepted.description"))
                                             .setFooter(interaction.getUser().getEffectiveName(), interaction.getUser().getAvatarUrl())
                                             .setTimestamp(Instant.now())

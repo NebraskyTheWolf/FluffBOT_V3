@@ -79,7 +79,7 @@ public class CommandTestPodium extends Command {
     @Override
     public void execute(CommandInteraction interaction) {
         EmbedBuilder embed = this.getEmbed().simpleAuthoredEmbed();
-        embed.setAuthor("Měsíční vyhodnocení - Nejaktivnější členové", "https://fluffici.eu", ICON_MEDAL);
+        embed.setAuthor("Měsíční vyhodnocení - Nejaktivnější členové", "https://fluffici.eu", ICON_MEDAL.getUrl());
         embed.setColor(Color.decode("#90EE90"));
         embed.setTimestamp(Instant.now());
 

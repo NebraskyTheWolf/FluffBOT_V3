@@ -84,7 +84,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
             // New commer card in admin
             EmbedBuilder newCommer = new EmbedBuilder();
             newCommer.setThumbnail(copiedForm.getThumbnail().getUrl());
-            newCommer.setAuthor(challenger.getUser().getGlobalName() + " byl právě ověřen!", "https://fluffici.eu", ICON_CHECKS);
+            newCommer.setAuthor(challenger.getUser().getGlobalName() + " byl právě ověřen!", "https://fluffici.eu", ICON_CHECKS.getUrl());
             newCommer.setDescription("Přivítejte ho mezi Fluffíky! :blue_heart:");
             newCommer.setColor(Color.GREEN);
             newCommer.setTimestamp(Instant.now());
@@ -101,10 +101,10 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
                                         interaction.getGuild().removeRoleFromMember(challenger, interaction.getGuild().getRoleById(FluffBOT.getInstance().getDefaultConfig().getProperty("roles.unverified"))).queue();
                                         interaction.getGuild().addRoleToMember(challenger, interaction.getGuild().getRoleById(FluffBOT.getInstance().getDefaultConfig().getProperty("roles.verified"))).queue();
 
-                                        interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getChannelConfig().getProperty("channel.verified"))
+                                        interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getDefaultConfig().getProperty("channel.verified"))
                                                 .sendMessageEmbeds(publicForm.build())
                                                 .queue();
-                                        interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getChannelConfig().getProperty("channel.main"))
+                                        interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getDefaultConfig().getProperty("channel.main"))
                                                 .sendMessageEmbeds(newCommer.build())
                                                 .addActionRow(Button.link("https://discord.com/channels/606534136806637589/customize-community", "Channels & Roles"))
                                                 .queue();
@@ -120,7 +120,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
 
                                         interaction.replyEmbeds(getEmbed()
                                                 .simpleAuthoredEmbed()
-                                                .setAuthor(getLanguageManager().get("common.verification.granted.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                                                .setAuthor(getLanguageManager().get("common.verification.granted.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                                                 .setDescription(getLanguageManager().get("common.verification.granted.description", challenger.getAsMention()))
                                                 .build()
                                         ).setEphemeral(true).queue();
@@ -151,7 +151,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
 
                                                            interaction.replyEmbeds(getEmbed()
                                                                    .simpleAuthoredEmbed()
-                                                                   .setAuthor(getLanguageManager().get("common.verification.sanction.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                                                                   .setAuthor(getLanguageManager().get("common.verification.sanction.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                                                                    .setDescription(getLanguageManager().get("common.verification.sanction.description", challenger.getAsMention(), reason))
                                                                    .build()
                                                            ).setEphemeral(true).queue();
@@ -171,10 +171,10 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
                         interaction.getGuild().removeRoleFromMember(challenger, interaction.getGuild().getRoleById(FluffBOT.getInstance().getDefaultConfig().getProperty("roles.unverified"))).queue();
                         interaction.getGuild().addRoleToMember(challenger, interaction.getGuild().getRoleById(FluffBOT.getInstance().getDefaultConfig().getProperty("roles.verified"))).queue();
 
-                        interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getChannelConfig().getProperty("channel.verified"))
+                        interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getDefaultConfig().getProperty("channel.verified"))
                                 .sendMessageEmbeds(publicForm.build())
                                 .queue();
-                        interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getChannelConfig().getProperty("channel.main"))
+                        interaction.getGuild().getTextChannelById(FluffBOT.getInstance().getDefaultConfig().getProperty("channel.main"))
                                 .sendMessageEmbeds(newCommer.build())
                                 .addActionRow(Button.link("https://discord.com/channels/606534136806637589/customize-community", "Channels & Roles"))
                                 .queue();
@@ -190,7 +190,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
 
                         interaction.replyEmbeds(this.getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(this.getLanguageManager().get("common.verification.granted.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                                .setAuthor(this.getLanguageManager().get("common.verification.granted.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                                 .setDescription(this.getLanguageManager().get("common.verification.granted.description", challenger.getAsMention()))
                                 .build()
                         ).setEphemeral(true).queue();
@@ -207,7 +207,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
                         if (privateChannel.canTalk()) {
                             privateChannel.sendMessageEmbeds(this.getEmbed()
                                     .simpleAuthoredEmbed()
-                                            .setAuthor("Výsledek ověření od " + interaction.getGuild().getName(), "https://fluffici.eu", ICON_CIRCLE_MINUS)
+                                            .setAuthor("Výsledek ověření od " + interaction.getGuild().getName(), "https://fluffici.eu", ICON_CIRCLE_MINUS.getUrl())
                                             .setTitle("Ověření bylo zamítnuto")
                                             .setDescription(String.format(
                                                     """
@@ -230,7 +230,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
 
                         modalInteraction.replyEmbeds(this.getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(this.getLanguageManager().get("common.verification.denied"), "https://fluffici.eu", ICON_CIRCLE_SLASHED)
+                                .setAuthor(this.getLanguageManager().get("common.verification.denied"), "https://fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                                 .setDescription(this.getLanguageManager().get("common.verification.denied.description", challenger.getAsMention(), reason))
                                 .build()
                         ).setEphemeral(true).queue();
@@ -253,7 +253,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
 
                         modalInteraction.replyEmbeds(this.getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(this.getLanguageManager().get("common.verification.ban.success"), "https://fluffici.eu", ICON_CIRCLE_SLASHED)
+                                .setAuthor(this.getLanguageManager().get("common.verification.ban.success"), "https://fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                                 .setDescription(this.getLanguageManager().get("common.verification.ban.success.description", challenger.getAsMention(), reason))
                                 .build()
                         ).setEphemeral(true).queue();

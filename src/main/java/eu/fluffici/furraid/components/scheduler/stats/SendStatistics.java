@@ -46,7 +46,7 @@ public class SendStatistics extends Task {
                 Request request = new Request.Builder()
                         .url("https://discordbotlist.com/api/v1/bots/" + this.instance.getJda().getSelfUser().getId() + "/stats")
                         .post(RequestBody.create(statistics.toString(), MediaType.parse("application/json")))
-                        .header("Authorization", "Bot eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0IjoxLCJpZCI6IjgwMzAxNTk2MjIyMzgzNzE4NCIsImlhdCI6MTcyMzI1Njg1NX0.7XlGD8HVZF8TxOcDgXKF0HsSRHqcCQ-u8oYbIsNbzdM")
+                        .header("Authorization", "Bot " + System.getenv("FURRAID_DBL_TOKEN"))
                         .build();
 
                 try (Response response = new OkHttpClient().newCall(request).execute()) {

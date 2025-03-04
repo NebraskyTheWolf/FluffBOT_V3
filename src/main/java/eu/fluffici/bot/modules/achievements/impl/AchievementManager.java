@@ -306,7 +306,7 @@ public class AchievementManager implements IAchievementManager {
         }
 
         assert user != null;
-        Objects.requireNonNull(Objects.requireNonNull(this.fluffbot.getJda().getGuildById(this.fluffbot.getDefaultConfig().getProperty("main.guild"))).getTextChannelById(this.fluffbot.getChannelConfig().getProperty("channel.achievements"))).sendMessageEmbeds(
+        Objects.requireNonNull(Objects.requireNonNull(this.fluffbot.getJda().getGuildById(this.fluffbot.getDefaultConfig().getProperty("main.guild"))).getTextChannelById(this.fluffbot.getDefaultConfig().getProperty("channel.achievements"))).sendMessageEmbeds(
                 this.fluffbot.getEmbed().simpleFieldedEmbed(
                                 this.fluffbot.getLanguageManager().get("event.achievement.unlocked"),
                                 this.fluffbot.getLanguageManager().get("event.achievement.description", achievement.getDisplayName(), progress.getProgress()),

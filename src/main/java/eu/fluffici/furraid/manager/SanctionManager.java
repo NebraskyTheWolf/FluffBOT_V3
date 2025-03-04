@@ -258,10 +258,10 @@ public class SanctionManager {
     @Contract(pure = true)
     private String getIconByType(@NotNull SanctionType type) {
         return switch (type) {
-            case KICK -> ICON_USER_X;
-            case WARN -> ICON_WARNING;
-            case BAN -> ICON_CIRCLE_SLASHED;
-            case MUTE -> ICON_MESSAGE_EXCLAMATION;
+            case KICK -> ICON_USER_X.getUrl();
+            case WARN -> ICON_WARNING.getUrl();
+            case BAN -> ICON_CIRCLE_SLASHED.getUrl();
+            case MUTE -> ICON_MESSAGE_EXCLAMATION.getUrl();
         };
     }
 

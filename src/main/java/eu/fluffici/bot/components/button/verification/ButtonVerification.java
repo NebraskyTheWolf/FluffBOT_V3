@@ -132,7 +132,7 @@ public class ButtonVerification extends ButtonBuilder {
         );
 
         Guild guild = interaction.getGuild();
-        TextChannel verificationChannel = guild.getTextChannelById(FluffBOT.getInstance().getChannelConfig().getProperty("channel.verification"));
+        TextChannel verificationChannel = guild.getTextChannelById(FluffBOT.getInstance().getDefaultConfig().getProperty("channel.verification"));
 
         handleCustomModal(interaction, "Ověřte se pro přístup do serveru", actionRows, challengeId, (modalInteraction, callbackId) -> {
             String answerOne = modalInteraction.getValue("row:verification:one").getAsString();
@@ -142,7 +142,7 @@ public class ButtonVerification extends ButtonBuilder {
 
             // Preparing the form to be sent
             EmbedBuilder verificationForm = getEmbed().simpleAuthoredEmbed();
-            verificationForm.setAuthor(getLanguageManager().get("button.verification.form.title", modalInteraction.getUser().getGlobalName()), "https://bot.fluffici.eu", ICON_QUESTION_MARK);
+            verificationForm.setAuthor(getLanguageManager().get("button.verification.form.title", modalInteraction.getUser().getGlobalName()), "https://bot.fluffici.eu", ICON_QUESTION_MARK.getUrl());
 
             verificationForm.setDescription(
                     String.format(
@@ -227,7 +227,7 @@ public class ButtonVerification extends ButtonBuilder {
 
             modalInteraction.replyEmbeds(getEmbed()
                     .simpleAuthoredEmbed()
-                            .setAuthor("Úspěšně odesláno", "https://fluffici.eu", ICON_FOLDER)
+                            .setAuthor("Úspěšně odesláno", "https://fluffici.eu", ICON_FOLDER.getUrl())
                             .setDescription("Tvoje žádost o ověření byla odeslána, prosíme o ztrpení.")
                             .setTimestamp(Instant.now())
                             .setColor(Color.GREEN)

@@ -132,10 +132,10 @@ public class CommandProfile extends Command {
         generatedProfile.whenComplete((fileUpload, throwable) -> {
             interaction.replyEmbeds(getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(getLanguageManager().get("command.profile.title", finalCurrentUser.getEffectiveName()), "https://fluffici.eu", ICON_BOOK)
+                    .setAuthor(getLanguageManager().get("command.profile.title", finalCurrentUser.getEffectiveName()), "https://fluffici.eu", ICON_BOOK.getUrl())
                     .setImage("attachment://".concat(requestId.concat("_profile.png")))
                     .setTimestamp(Instant.now())
-                    .setFooter(getLanguageManager().get("command.profile.footer"), ICON_REPORT_SEARCH)
+                    .setFooter(getLanguageManager().get("command.profile.footer"), ICON_REPORT_SEARCH.getUrl())
                     .build()
             ).addFiles(fileUpload).queue();
         }).exceptionally(e -> {

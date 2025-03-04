@@ -109,7 +109,7 @@ public class CommandCraft extends Command {
     private MessageEmbed buildCraftSuccess(@NotNull ItemDescriptionBean item, @NotNull ItemCraftBuilder craftBuilder, @NotNull String generatedId) {
         EmbedBuilder message = this.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.getLanguageManager().get("command.craft.item.info", item.getItemName()), "https://fluffici.eu", ICON_NOTE)
+                .setAuthor(this.getLanguageManager().get("command.craft.item.info", item.getItemName()), "https://fluffici.eu", ICON_NOTE.getUrl())
                 .setDescription(this.getLanguageManager().get(item.getItemDesc()))
                 .setThumbnail("attachment://".concat(generatedId.concat(".png")))
                 .addField(this.getLanguageManager().get("common.rarity"), this.getLanguageManager().get("rarity.".concat(item.getItemRarity().name().toLowerCase())), true)

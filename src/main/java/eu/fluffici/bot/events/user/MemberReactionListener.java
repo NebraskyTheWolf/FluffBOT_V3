@@ -77,9 +77,9 @@ public class MemberReactionListener extends ListenerAdapter {
             if (member != null) {
                 List<RichCustomEmoji> emojis = event.getGuild().getEmojisByName(event.getEmoji().getName(), true);
                 if (!emojis.isEmpty()) {
-                    String emojiId = event.getGuild().getEmojisByName(event.getEmoji().getName(), true).get(0).getId();
-                    String emojiUp = this.instance.getEmojiConfig().getProperty("neon_thumbsup");
-                    String emojiDown = this.instance.getEmojiConfig().getProperty("neon_thumbsdown");
+                    String emojiId = event.getGuild().getEmojisByName(event.getEmoji().getName(), true).getFirst().getId();
+                    String emojiUp = this.instance.getDefaultConfig().getProperty("neon_thumbsup");
+                    String emojiDown = this.instance.getDefaultConfig().getProperty("neon_thumbsdown");
 
                     if (emojiId.equals(emojiUp)) {
                         this.instance.getUserManager().addKarma(handler, 1);

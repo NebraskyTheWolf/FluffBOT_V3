@@ -103,7 +103,7 @@ public class UpdateChannelMember extends Task {
 
     public void updateMembers() {
         int members = this.instance.getJda().getGuildById(this.instance.getDefaultConfig().getProperty("main.guild")).getMemberCount();
-        VoiceChannel limitChannel = instance.getJda().getVoiceChannelById(instance.getChannelConfig().getProperty("channel.stats.members"));
+        VoiceChannel limitChannel = instance.getJda().getVoiceChannelById(instance.getDefaultConfig().getProperty("channel.stats.members"));
         if (limitChannel != null) {
             limitChannel.getManager().setName(instance.getLanguageManager().get("common.members", members)).queue();
         }
@@ -119,7 +119,7 @@ public class UpdateChannelMember extends Task {
                     .filter(message -> this.instance.getJda().getUserById(message.getUserId()) != null)
                     .count();
 
-            VoiceChannel messageChannel = this.instance.getJda().getVoiceChannelById(this.instance.getChannelConfig().getProperty("channel.stats.messages"));
+            VoiceChannel messageChannel = this.instance.getJda().getVoiceChannelById(this.instance.getDefaultConfig().getProperty("channel.stats.messages"));
             if (messageChannel != null) {
                 messageChannel.getManager().setName(this.instance.getLanguageManager().get("common.messages", count)).queue();
             }

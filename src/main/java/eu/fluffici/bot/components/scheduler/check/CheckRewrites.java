@@ -174,20 +174,20 @@ public class CheckRewrites extends Task {
 
                                 EmbedBuilder embedBuilder = this.instance.getEmbed()
                                         .simpleAuthoredEmbed()
-                                        .setAuthor("Anti-Cheat", "https://fluffici.eu", ICON_SHIELD_X)
+                                        .setAuthor("Anti-Cheat", "https://fluffici.eu", ICON_SHIELD_X.getUrl())
                                         .setTitle("Byly zjištěny přepisové anomálie.")
                                         .setDescription(String.format("Zjistili jsme anomálii v zůstatcích <@%s>.", userId))
                                         .addField("Měna", currency.name(), true)
                                         .addField("Zůstatek", String.valueOf(balance), true)
                                         .addField("Problémová váha", String.valueOf(Math.abs(amountToDeduct - balance)), true)
                                         .setTimestamp(Instant.now())
-                                        .setFooter(String.format("Zůstatek automaticky snížen o %s", Math.abs(amountToDeduct - balance)), ICON_REPORT_SEARCH);
+                                        .setFooter(String.format("Zůstatek automaticky snížen o %s", Math.abs(amountToDeduct - balance)), ICON_REPORT_SEARCH.getUrl());
 
                                 if (!rolledBack.isEmpty())
                                     embedBuilder.addField("Vrácené transakce", joinedString, false);
 
                                 this.instance.getJda()
-                                        .getTextChannelById(this.instance.getChannelConfig().getProperty("channel.logging"))
+                                        .getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.logging"))
                                         .sendMessageEmbeds(embedBuilder.build())
                                         .queue();
 
@@ -228,7 +228,6 @@ public class CheckRewrites extends Task {
                     int amount = transaction.getAmount();
                     EconomyHistory.Operation operation = transaction.getOperation();
 
-                    // If user doesn't exist in map, add them
                     userBalances.putIfAbsent(userId, new HashMap<>());
 
                     int currentBalance = userBalances.get(userId).getOrDefault(currency, 0);

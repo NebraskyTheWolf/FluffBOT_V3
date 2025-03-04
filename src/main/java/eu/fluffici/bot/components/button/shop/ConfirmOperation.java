@@ -48,10 +48,10 @@ public class ConfirmOperation extends ListenerAdapter {
         if (!event.getUser().getId().equals(interaction.getUser().getId())) {
             event.getInteraction().replyEmbeds(FluffBOT.getInstance().getEmbed()
                     .simpleAuthoredEmbed()
-                            .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.error"), "https://fluffici.eu", ICON_ALERT_CIRCLE)
+                            .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.error"), "https://fluffici.eu", ICON_ALERT_CIRCLE.getUrl())
                             .setDescription(FluffBOT.getInstance().getLanguageManager().get("common.interaction.not_owned"))
                             .setTimestamp(Instant.now())
-                            .setFooter(FluffBOT.getInstance().getLanguageManager().get("common.error.footer"), ICON_QUESTION_MARK)
+                            .setFooter(FluffBOT.getInstance().getLanguageManager().get("common.error.footer"), ICON_QUESTION_MARK.getUrl())
                     .build()
             ).setEphemeral(true).queue();
             return;

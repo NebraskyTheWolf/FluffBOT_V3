@@ -53,12 +53,13 @@ public class Start {
                             ██╔══╝  ██╔══██╗██║    \s
                             ██║     ██████╔╝███████╗
                             ╚═╝     ╚═════╝ ╚══════╝\s
-                            Contact: vakea@fluffici.eu
+                            Contact: administrace@fluffici.eu
             """;
 
     // Please do not change the list orders
     private static final String[] DEVELOPERS = {
-            "Lead dev: Vakea <vakea@fluffici.eu>"
+            "Lead dev: Vakea <alex.leroy8303@seznam.cz>",
+            "Translator: Asherro <asherro@fluffici.eu>"
     };
 
     @SneakyThrows
@@ -68,9 +69,16 @@ public class Start {
         logger.info("Copyright (c) 2024 Fluffici, z.s.");
         logger.info("v".concat(VERSION));
 
-        logger.info("Stating system in 5 seconds...");
+        logger.info("Github: https://github.com/fluffici/Fluffbot");
+        logger.info("Website: https://fluffici.eu");
+        logger.info("Status: https://status.fluffici.eu");
 
-        Thread.sleep(5000);
+        logger.info("Developer(s):");
+        for (String dev : DEVELOPERS)
+            logger.info(" -> ".concat(dev));
+
+        logger.info("Licence: PROPRIETARY LICENCE");
+        logger.info("Licence Document: https://autumn.fluffici.eu/attachments/xUiAJbvhZaXW3QIiLMFFbVL7g7nPC2nfX7v393UjEn/fluffici_software_license_cz.pdf");
 
         instanceManager.load();
         logger.info("Loading stage finished.");
@@ -91,18 +99,6 @@ public class Start {
                     case "furraiddb" -> {
                         logger.info("Loading fur-raid instance.");
                         instanceManager.enableByName("fur-raid");
-                    }
-                    case "about" -> {
-                        logger.info("Github: https://github.com/fluffici/Fluffbot");
-                        logger.info("Website: https://fluffici.eu");
-                        logger.info("Status: https://status.fluffici.eu");
-
-                        logger.info("Developer(s):");
-                        for (String dev : DEVELOPERS)
-                            logger.info(" -> ".concat(dev));
-
-                        logger.info("Licence: PROPRIETARY LICENCE");
-                        logger.info("Licence Document: https://autumn.fluffici.eu/attachments/xUiAJbvhZaXW3QIiLMFFbVL7g7nPC2nfX7v393UjEn/fluffici_software_license_cz.pdf");
                     }
                     default -> {
                         logger.info("Unknown instance, please refer to the documentation.");

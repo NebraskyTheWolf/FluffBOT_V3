@@ -372,7 +372,7 @@ public class CommandInventory extends Command {
         generatedProfile.whenComplete((fileUpload, throwable) -> {
             interaction.getHook().sendMessageEmbeds(getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(getLanguageManager().get("command.backpack.title", currentUser.getGlobalName()), "https://fluffici.eu", ICON_BOOK)
+                    .setAuthor(getLanguageManager().get("command.backpack.title", currentUser.getGlobalName()), "https://fluffici.eu", ICON_BOOK.getUrl())
                     .setImage("attachment://".concat(requestId.concat("_backpack.png")))
                     .setTimestamp(Instant.now())
                     .build()
@@ -624,7 +624,7 @@ public class CommandInventory extends Command {
 
                 EmbedBuilder message = this.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor(this.getLanguageManager().get("command.inventory.item.info", item.getItemName()), "https://fluffici.eu", ICON_NOTE)
+                        .setAuthor(this.getLanguageManager().get("command.inventory.item.info", item.getItemName()), "https://fluffici.eu", ICON_NOTE.getUrl())
                         .setDescription(this.getLanguageManager().get(playerItem.getDescription()))
                         .setThumbnail("attachment://item_".concat(itemName.concat(".png")))
                         .addField(this.getLanguageManager().get("common.rarity"), this.getLanguageManager().get("rarity.".concat(playerItem.getRarity().name().toLowerCase())), true)
@@ -703,7 +703,7 @@ public class CommandInventory extends Command {
                 if (playerItem.isEquipment() && playerItem.getEquipmentType() != EquipmentType.ITEM) {
                     EmbedBuilder message = this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("command.inventory.item.info", playerItem.getName()), "https://fluffici.eu", ICON_NOTE)
+                            .setAuthor(this.getLanguageManager().get("command.inventory.item.info", playerItem.getName()), "https://fluffici.eu", ICON_NOTE.getUrl())
                             .setDescription(this.getLanguageManager().get(playerItem.getDescription()))
                             .setThumbnail("attachment://item.png")
                             .addField(this.getLanguageManager().get("common.rarity"), this.getLanguageManager().get("rarity.".concat(playerItem.getRarity().name().toLowerCase())), true)
@@ -789,7 +789,7 @@ public class CommandInventory extends Command {
         generatedProfile.whenComplete((fileUpload, throwable) -> {
             interaction.getHook().sendMessageEmbeds(getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(getLanguageManager().get("command.inventory.title", currentUser.getGlobalName()), "https://fluffici.eu", ICON_BOOK)
+                    .setAuthor(getLanguageManager().get("command.inventory.title", currentUser.getGlobalName()), "https://fluffici.eu", ICON_BOOK.getUrl())
                     .setImage("attachment://".concat(requestId.concat("_inventory.png")))
                     .setTimestamp(Instant.now())
                     .build()

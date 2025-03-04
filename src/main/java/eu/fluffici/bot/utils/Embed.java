@@ -39,6 +39,7 @@ Last Modified : 02/06/2024
 
 
 import eu.fluffici.bot.FluffBOT;
+import eu.fluffici.bot.api.IconRegistry;
 import eu.fluffici.bot.api.hooks.IEmbed;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.MessageEmbed;
@@ -103,7 +104,7 @@ public class Embed implements IEmbed {
                     .setFooter(this.instance.getJda().getSelfUser().getGlobalName(), this.instance.getJda().getSelfUser().getAvatarUrl());
         }
         return this.simpleEmbed(title, description, Color.decode("#2F3136"))
-                .setTitle(String.format("%s %s", this.instance.getEmojiConfig().get(icon), title))
+                .setTitle(String.format("%s %s", IconRegistry.getIconFromName(icon), title))
                 .setFooter(this.instance.getJda().getSelfUser().getGlobalName(), this.instance.getJda().getSelfUser().getAvatarUrl());
     }
 

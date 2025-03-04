@@ -100,14 +100,14 @@ public class LevelUtil {
         return newLevel > originalLevel;
     }
 
-    public boolean addXPVoice(PlayerBean player, int hours) {
+    public void addXPVoice(PlayerBean player, int hours) {
         if (hours <= 0) {
-            return false;
+            return;
         }
 
         long originalLevel = player.getLevel();
         if (originalLevel >= MAX_LEVEL) {
-            return false;
+            return;
         }
 
         double multiplier = this.lottery();
@@ -119,7 +119,6 @@ public class LevelUtil {
         player.setLevel(newLevel);
 
         this.instance.getUserManager().saveUser(player);
-        return newLevel > originalLevel;
     }
 
     public long getXp(PlayerBean player) {
@@ -195,19 +194,6 @@ public class LevelUtil {
         }
 
         return (double) remainingXpToNextLevel / this.XP_PER_HOUR;
-    }
-
-    public boolean updateLevel(PlayerBean player) {
-        if (player == null) {
-            return false;
-        }
-
-        long originalLevel = player.getLevel();
-        int newLevel = calculateLevel(player);
-        player.setLevel(newLevel);
-        this.instance.getUserManager().saveUser(player);
-
-        return newLevel > originalLevel;
     }
 
     public double lottery() {

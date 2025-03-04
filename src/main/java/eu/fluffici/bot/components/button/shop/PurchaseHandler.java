@@ -90,7 +90,7 @@ public class PurchaseHandler {
 
         interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(title, "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(title, "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(description)
                 .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .setTimestamp(Instant.now())

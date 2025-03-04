@@ -144,8 +144,8 @@ public class CommandHelp extends Command {
 
                         interaction.replyEmbeds(this.getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(this.getLanguageManager().get("command.help"), "https://fluffici.eu", ICON_QUESTION_MARK)
-                                .setFooter(this.getLanguageManager().get("command.help.category", this.getLanguageManager().get("command.category.".concat(category.name().toLowerCase()))), ICON_SCROLL)
+                                .setAuthor(this.getLanguageManager().get("command.help"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
+                                .setFooter(this.getLanguageManager().get("command.help.category", this.getLanguageManager().get("command.category.".concat(category.name().toLowerCase()))), ICON_SCROLL.getUrl())
                                 .setDescription(builder.toString())
                                 .build()
                         ).queue();
@@ -159,7 +159,7 @@ public class CommandHelp extends Command {
 
                         EmbedBuilder commandEmbed = this.getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(this.getLanguageManager().get("command.help"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                                .setAuthor(this.getLanguageManager().get("command.help"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                                 .setDescription(command1.getDescription())
                                 .addField(this.getLanguageManager().get("common.usage"), command1.getUsage(), false)
                                 .addField(this.getLanguageManager().get("common.category"), this.getLanguageManager().get("command.category.".concat(command1.getCategory().name().toLowerCase())), false);

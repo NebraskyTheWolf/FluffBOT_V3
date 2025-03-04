@@ -115,7 +115,7 @@ public class DeleteUnpaidChannels extends Task {
 
         EmbedBuilder message = this.instance.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.instance.getLanguageManager().get("channel.deleted.notice.title"), "https://fluffici.eu", ICON_ALERT)
+                .setAuthor(this.instance.getLanguageManager().get("channel.deleted.notice.title"), "https://fluffici.eu", ICON_ALERT.getUrl())
                 .setDescription(this.instance.getLanguageManager().get("channel.deleted.notice.description", dummyChannel.getChannelId(), discordFormattedDeletionDate))
                 .setFooter(this.instance.getLanguageManager().get("channel.deleted.notice.footer"))
                 .setColor(Color.RED);
@@ -124,7 +124,7 @@ public class DeleteUnpaidChannels extends Task {
         if (ownerDm.canTalk()) {
             ownerDm.sendMessageEmbeds(message.build()).queue();
         } else {
-            this.instance.getJda().getTextChannelById(this.instance.getChannelConfig().getProperty("channel.level"))
+            this.instance.getJda().getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.level"))
                     .sendMessageEmbeds(message.build())
                     .setContent(owner.getAsMention())
                     .queue();

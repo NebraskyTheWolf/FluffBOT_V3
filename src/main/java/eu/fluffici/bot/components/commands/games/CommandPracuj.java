@@ -119,7 +119,7 @@ public class CommandPracuj extends Command {
 
         interaction.replyEmbeds(this.getEmbed()
                 .simpleAuthoredEmbed()
-                        .setAuthor(this.getLanguageManager().get("command.pracuj.success.title"), "https://fluffici.eu", ICON_TRUCK)
+                        .setAuthor(this.getLanguageManager().get("command.pracuj.success.title"), "https://fluffici.eu", ICON_TRUCK.getUrl())
                         .addField(this.getLanguageManager().get("command.pracuj.winnings"), String.format("%s <:flufftoken:820777573046812693>", randomCurrency), true)
                         .addField(this.getLanguageManager().get("command.pracuj.new_balance"), String.format("%s <:flufftoken:820777573046812693>", newBalance), true)
                         .addField(this.getLanguageManager().get("command.pracuj.shitfs"), String.format("%s", shifts), true)

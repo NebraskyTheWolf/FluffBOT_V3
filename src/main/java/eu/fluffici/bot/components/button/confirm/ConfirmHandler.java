@@ -40,7 +40,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                 .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -63,7 +63,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                 .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -87,7 +87,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                 .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -111,7 +111,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                 .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -135,7 +135,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                 .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -159,7 +159,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                 .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -183,7 +183,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                 .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -199,7 +199,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FurRaidDB.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FurRaidDB.getInstance().getLanguageManager().get(description))
                 .setFooter(FurRaidDB.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -215,7 +215,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FurRaidDB.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FurRaidDB.getInstance().getLanguageManager().get(description))
                 .setFooter(FurRaidDB.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -231,7 +231,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FurRaidDB.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FurRaidDB.getInstance().getLanguageManager().get(description))
                 .setFooter(FurRaidDB.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -247,7 +247,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FurRaidDB.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FurRaidDB.getInstance().getLanguageManager().get(description))
                 .setFooter(FurRaidDB.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -273,7 +273,7 @@ public class ConfirmHandler {
 
         interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                 .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                 .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                 .build()
@@ -301,7 +301,7 @@ public class ConfirmHandler {
         if (isMention) {
             interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                    .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                     .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                     .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                     .build()
@@ -312,7 +312,7 @@ public class ConfirmHandler {
         } else {
             interaction.replyEmbeds(FluffBOT.getInstance().getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                    .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.confirm.operation"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                     .setDescription(FluffBOT.getInstance().getLanguageManager().get(description))
                     .setFooter(FluffBOT.getInstance().getLanguageManager().get("confirm.choice.footer"))
                     .build()

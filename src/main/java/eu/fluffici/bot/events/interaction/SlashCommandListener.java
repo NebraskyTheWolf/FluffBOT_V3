@@ -88,7 +88,7 @@ public class SlashCommandListener extends ListenerAdapter {
 
         // Handling command execution.
 
-        String commandChannel = this.instance.getChannelConfig().getProperty("channel.commands");
+        String commandChannel = this.instance.getDefaultConfig().getProperty("channel.commands");
 
         Command command = this.instance.getCommandManager().findByName(event.getName());
         if (command != null) {
@@ -117,7 +117,7 @@ public class SlashCommandListener extends ListenerAdapter {
 
                 event.getInteraction().replyEmbeds(command.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor(command.getLanguageManager().get("common.interaction.restricted"), "https://fluffici.eu", ICON_CIRCLE_MINUS)
+                        .setAuthor(command.getLanguageManager().get("common.interaction.restricted"), "https://fluffici.eu", ICON_CIRCLE_MINUS.getUrl())
                         .setDescription(command.getLanguageManager().get("common.interaction.restricted.desc", restrictedAccess.getReason()))
                         .setFooter(author.getGlobalName(), author.getAvatarUrl())
                         .setColor(Color.RED)

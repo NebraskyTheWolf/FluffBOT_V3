@@ -270,7 +270,7 @@ public class BlacklistManager implements IBlacklistManager {
             if (loggingChannel != null && loggingChannel.canTalk(blacklist.getGuild().getSelfMember())) {
                 EmbedBuilder blacklistedMessage = this.instance.getEmbed().simpleAuthoredEmbed();
                 blacklistedMessage.setColor(Color.decode("#9412d5"));
-                blacklistedMessage.setAuthor(this.instance.getLanguageManager().get("common.locally_blacklisted.title.added", user.getGlobalName()), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED);
+                blacklistedMessage.setAuthor(this.instance.getLanguageManager().get("common.locally_blacklisted.title.added", user.getGlobalName()), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl());
 
                 blacklistedMessage.setThumbnail(user.getAvatarUrl());
                 blacklistedMessage.setTimestamp(Instant.now());

@@ -40,24 +40,18 @@ Last Modified : 02/06/2024
 import com.google.common.eventbus.Subscribe;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-import com.runarmc.handler.RequestCallback;
-import com.runarmc.results.ErrorResult;
-import com.runarmc.results.RequestResult;
 import eu.fluffici.bot.FluffBOT;
 import eu.fluffici.bot.api.DurationUtil;
 import eu.fluffici.bot.api.beans.players.OutingSubscriber;
 import eu.fluffici.bot.api.beans.statistics.AkceDummy;
 import eu.fluffici.bot.api.beans.statistics.AkceNotification;
 import eu.fluffici.bot.api.events.*;
-import eu.fluffici.bot.database.request.RequestCancelEvent;
-import eu.fluffici.bot.database.request.RequestSendEvent;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.SneakyThrows;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Message;
-import net.dv8tion.jda.api.entities.ScheduledEvent;
 import net.dv8tion.jda.api.entities.User;
 import net.dv8tion.jda.api.entities.UserSnowflake;
 import net.dv8tion.jda.api.entities.channel.concrete.PrivateChannel;
@@ -73,8 +67,6 @@ import net.dv8tion.jda.api.events.guild.GuildBanEvent;
 import net.dv8tion.jda.api.events.guild.GuildUnbanEvent;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberRoleAddEvent;
 import net.dv8tion.jda.api.events.guild.member.GuildMemberRoleRemoveEvent;
-import net.dv8tion.jda.api.events.guild.scheduledevent.ScheduledEventCreateEvent;
-import net.dv8tion.jda.api.events.guild.scheduledevent.ScheduledEventDeleteEvent;
 import net.dv8tion.jda.api.events.guild.scheduledevent.update.GenericScheduledEventUpdateEvent;
 import net.dv8tion.jda.api.events.role.RoleCreateEvent;
 import net.dv8tion.jda.api.events.role.RoleDeleteEvent;
@@ -87,7 +79,6 @@ import net.dv8tion.jda.api.hooks.ListenerAdapter;
 import net.dv8tion.jda.api.interactions.components.buttons.Button;
 import net.dv8tion.jda.api.utils.FileUpload;
 import net.dv8tion.jda.internal.utils.tuple.Pair;
-import okhttp3.Response;
 import org.jetbrains.annotations.NotNull;
 
 import java.awt.*;
@@ -509,7 +500,7 @@ public class GuildLoggingListener extends ListenerAdapter {
                 .builder()
                 .title(this.instance.getLanguageManager().get("logger.user_restriction"))
                 .description(this.instance.getLanguageManager().get("logger.user_restriction.description"))
-                .icon(ICON_ALERT)
+                .icon(ICON_ALERT.getUrl())
                 .from(issuedBy)
                 .to(targetPlayer)
                 .reason(event.getReason())
@@ -522,7 +513,7 @@ public class GuildLoggingListener extends ListenerAdapter {
             case "system-restart" -> {
                 this.instance.getJda().getGuildById("1243247749550440508").getTextChannelById("1243922239611605063").sendMessageEmbeds(this.instance.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor("Restart schedulled in 60 seconds from (Github)", "https://fluffici.eu", ICON_ALERT)
+                        .setAuthor("Restart schedulled in 60 seconds from (Github)", "https://fluffici.eu", ICON_ALERT.getUrl())
                         .setDescription("New update was pushed and FluffBOT is now planned to restart...")
                         .setTimestamp(Instant.now())
                         .build()
@@ -686,7 +677,7 @@ public class GuildLoggingListener extends ListenerAdapter {
     private void sendAudit(AuditBuilder auditBuilder) {
         TextChannel logging = this.instance.getJda()
                 .getGuildById(this.instance.getDefaultConfig().getProperty("main.guild"))
-                .getTextChannelById(this.instance.getChannelConfig().getProperty("channel.logging"));
+                .getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.logging"));
         if (logging != null) {
             EmbedBuilder embedBuilder = this.instance.getEmbed()
                     .simpleAuthoredEmbed()
@@ -708,7 +699,7 @@ public class GuildLoggingListener extends ListenerAdapter {
                     embedBuilder.addField(action.getLeft(), action.getRight(), false);
 
             if (auditBuilder.getFrom() != null)
-                embedBuilder.setFooter(auditBuilder.getFrom().getId(), ICON_REPORT_SEARCH);
+                embedBuilder.setFooter(auditBuilder.getFrom().getId(), ICON_REPORT_SEARCH.getUrl());
 
             if (!logging.canTalk()) {
                 this.instance.getLogger().warn("Cannot interact with channel %s", logging.getId());
@@ -720,7 +711,7 @@ public class GuildLoggingListener extends ListenerAdapter {
             if (auditBuilder.isModeration()) {
                 TextChannel moderation = this.instance.getJda()
                         .getGuildById(this.instance.getDefaultConfig().getProperty("main.guild"))
-                        .getTextChannelById(this.instance.getChannelConfig().getProperty("channel.moderation"));
+                        .getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.moderation"));
                 if (moderation != null) {
                     String id = UUID.randomUUID().toString();
 
@@ -746,63 +737,17 @@ public class GuildLoggingListener extends ListenerAdapter {
     }
 
     @Override
-    @SneakyThrows
-    public void onScheduledEventCreate(@NotNull ScheduledEventCreateEvent event) {
-        if (!FluffBOT.getInstance().getDefaultConfig().getProperty("main.guild").equals(event.getGuild().getId()))
-            return;
-        ScheduledEvent scheduled = event.getScheduledEvent();
-        this.instance.getRequestHandler().execute(this.instance.getWrapper(), new RequestSendEvent(scheduled), new RequestCallback() {
-            @Override
-            public void onFailure(ErrorResult errorResult) {
-                instance.getLogger().warn("Request failed for ScheduledEventCreate:");
-                instance.getLogger().warn("  -> %s", errorResult.getMessage());
-                instance.getLogger().warn("  -> %s", errorResult.getError());
-
-                scheduled.getManager().setName("[✖] ".concat(scheduled.getName())).queue();
-            }
-
-            @Override
-            public void onSuccess(RequestResult requestResult, Response response) {
-                instance.getLogger().info("ScheduledEventCreate synchronised successfully.");
-
-                scheduled.getManager().setName("✓ ".concat(scheduled.getName())).queue();
-            }
-        });
-    }
-
-    @Override
-    @SneakyThrows
-    public void onScheduledEventDelete(@NotNull ScheduledEventDeleteEvent event) {
-        if (!FluffBOT.getInstance().getDefaultConfig().getProperty("main.guild").equals(event.getGuild().getId()))
-            return;
-        ScheduledEvent scheduled = event.getScheduledEvent();
-        this.instance.getRequestHandler().execute(this.instance.getWrapper(), new RequestCancelEvent(scheduled), new RequestCallback() {
-            @Override
-            public void onFailure(ErrorResult errorResult) {
-                instance.getLogger().warn("Request failed for ScheduledEventDelete:");
-                instance.getLogger().warn("  -> %s", errorResult.getMessage());
-                instance.getLogger().warn("  -> %s", errorResult.getError());
-            }
-
-            @Override
-            public void onSuccess(RequestResult requestResult, Response response) {
-                instance.getLogger().info("ScheduledEventDelete synchronised successfully.");
-            }
-        });
-    }
-
-    @Override
     public void onGenericScheduledEventUpdate(@NotNull GenericScheduledEventUpdateEvent event) { }
 
     private Pair<String, String> fetchSanctionType(int type) {
         return switch (type) {
-            case 1 -> Pair.of("Warn", ICON_WARNING);
-            case 2 -> Pair.of("Ban", ICON_CIRCLE_SLASHED);
+            case 1 -> Pair.of("Warn", ICON_WARNING.getUrl());
+            case 2 -> Pair.of("Ban", ICON_CIRCLE_SLASHED.getUrl());
             case 3 -> Pair.of("Kick", ICON_USER_MINUS);
-            case 4 -> Pair.of("Mute", ICON_MESSAGE_EXCLAMATION);
-            case 5 -> Pair.of("Unban", ICON_FOLDER);
+            case 4 -> Pair.of("Mute", ICON_MESSAGE_EXCLAMATION.getUrl());
+            case 5 -> Pair.of("Unban", ICON_FOLDER.getUrl());
 
-            default -> Pair.of("Unknown", ICON_QUESTION_MARK);
+            default -> Pair.of("Unknown", ICON_QUESTION_MARK.getUrl());
         };
     }
 

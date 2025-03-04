@@ -80,7 +80,7 @@ public class CommandFish extends Command {
         if (result.getLeft()) {
             interaction.replyEmbeds(this.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(this.getLanguageManager().get("common.not_so_fast"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                    .setAuthor(this.getLanguageManager().get("common.not_so_fast"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                     .setDescription(result.getRight())
                     .build()
             ).queue();
@@ -100,7 +100,7 @@ public class CommandFish extends Command {
                     this.getUserManager().addItem(interaction.getMember(), fish);
                     interaction.replyEmbeds(this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("command.fish.caught_a_fish"), "https://fluffici.eu", ICON_FISH)
+                            .setAuthor(this.getLanguageManager().get("command.fish.caught_a_fish"), "https://fluffici.eu", ICON_FISH.getUrl())
                             .setThumbnail((fish.getAssetPath().contains("https://") ? fish.getAssetPath() : null))
                             .setDescription(this.getLanguageManager().get(fish.getItemDesc()))
                             .addField(this.getLanguageManager().get("common.inventory.rarity"), this.getLanguageManager().get("rarity.".concat(fish.getItemRarity().name().toLowerCase())), true)
@@ -110,7 +110,7 @@ public class CommandFish extends Command {
                             .addField(this.getLanguageManager().get("common.humidity"), environment.getHumidity() + "%", false)
                             .addField(this.getLanguageManager().get("common.temperature"), environment.getTemperature() + "°C", true)
 
-                            .setFooter(this.getLanguageManager().get("command.fish.shop.info"), ICON_QUESTION_MARK)
+                            .setFooter(this.getLanguageManager().get("command.fish.shop.info"), ICON_QUESTION_MARK.getUrl())
                             .build()
                     ).queue();
 
@@ -137,7 +137,7 @@ public class CommandFish extends Command {
         // No fish was caught
         interaction.replyEmbeds(this.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.getLanguageManager().get("command.fish.oh_no"), "https://fluffici.eu", ICON_FISH)
+                .setAuthor(this.getLanguageManager().get("command.fish.oh_no"), "https://fluffici.eu", ICON_FISH.getUrl())
                 .setDescription(this.getLanguageManager().get("command.fish.no_fish"))
                 .setTimestamp(Instant.now())
                 .build()

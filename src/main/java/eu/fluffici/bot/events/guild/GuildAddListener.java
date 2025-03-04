@@ -73,7 +73,7 @@ public class GuildAddListener extends ListenerAdapter {
             if (guild.getSystemChannel() != null && guild.getSystemChannel().canTalk(event.getGuild().getSelfMember())) {
                 guild.getSystemChannel().sendMessageEmbeds(this.instance.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor("Not allowed.", "https://fluffici.eu", ICON_HEXAGON_CIRCLE)
+                        .setAuthor("Not allowed.", "https://fluffici.eu", ICON_HEXAGON_CIRCLE.getUrl())
                         .setDescription("You are not allowed to invite the bot in this discord server. \n For more information please contact `administrace@fluffici.eu`.")
                         .setTimestamp(Instant.now())
                         .setFooter(self.getGlobalName(), self.getAvatarUrl())
@@ -104,11 +104,11 @@ public class GuildAddListener extends ListenerAdapter {
 
             Message message = guild.getSystemChannel().sendMessageEmbeds(FluffBOT.getInstance().getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor("Server configuration adjustment.", "https://fluffici.eu", ICON_SETTINGS)
+                    .setAuthor("Server configuration adjustment.", "https://fluffici.eu", ICON_SETTINGS.getUrl())
                     .setTitle("Please confirm this operation.")
                     .setTimestamp(Instant.now())
                     .setDescription("- Synchronising the member list * \n - Checking channel check-list. \n - Validating configuration \n - Setting up missing channels. \n\n Please click on the button 'Migrate' bellow to validate the server configuration.")
-                    .setFooter("This operation should take less than 3 minutes.", ICON_QUESTION_MARK)
+                    .setFooter("This operation should take less than 3 minutes.", ICON_QUESTION_MARK.getUrl())
                     .build()
             ).addActionRow(interaction.getLeft()).setContent(owner.getAsMention()).complete();
 

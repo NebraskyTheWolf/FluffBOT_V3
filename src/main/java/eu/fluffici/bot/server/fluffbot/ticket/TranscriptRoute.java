@@ -29,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 public class TranscriptRoute extends WebRoute {
 
     public TranscriptRoute() {
-        super("/transcript", RouteMethod.GET);
+        super("/transcript", RouteMethod.GET, true);
     }
 
     /**

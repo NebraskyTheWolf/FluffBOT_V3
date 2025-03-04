@@ -51,7 +51,7 @@ public class ReminderKick extends ButtonBuilder {
 
             modalInteraction.replyEmbeds(this.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(this.getLanguageManager().get("common.reminder.kick.success"), "https://fluffici.eu", ICON_CIRCLE_SLASHED)
+                    .setAuthor(this.getLanguageManager().get("common.reminder.kick.success"), "https://fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                     .setDescription(this.getLanguageManager().get("common.reminder.kick.success.description"))
                     .build()
             ).setEphemeral(true).queue();

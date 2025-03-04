@@ -44,10 +44,10 @@ public class LockExpiredReminder extends Task {
 
             if (!mentions.isEmpty()) {
                 FluffBOT.getInstance().getJda().getGuildById(FluffBOT.getInstance().getDefaultConfig().getProperty("main.guild"))
-                        .getTextChannelById(FluffBOT.getInstance().getChannelConfig().getProperty("channel.staff"))
+                        .getTextChannelById(FluffBOT.getInstance().getDefaultConfig().getProperty("channel.staff"))
                         .sendMessageEmbeds(FluffBOT.getInstance().getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(languageManager.get("task.reminder.locked.title"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                                .setAuthor(languageManager.get("task.reminder.locked.title"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                                 .setDescription(String.join("* \n", mentions))
                                 .setTimestamp(Instant.now())
                                 .build()

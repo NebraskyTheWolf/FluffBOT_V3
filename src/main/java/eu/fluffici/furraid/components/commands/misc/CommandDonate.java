@@ -40,7 +40,7 @@ public class CommandDonate extends FCommand {
     public void execute(CommandInteraction interaction, GuildSettings settings) {
         interaction.replyEmbeds(this.getEmbed()
                 .simpleAuthoredEmbed()
-                        .setAuthor(this.getLanguageManager().get("command.donate.title"), "https://frdb.fluffici.eu", ICON_HEART)
+                        .setAuthor(this.getLanguageManager().get("command.donate.title"), "https://frdb.fluffici.eu", ICON_HEART.getUrl())
                         .setDescription(this.getLanguageManager().get("command.donate.description"))
                         .setTimestamp(Instant.now())
                         .setColor(Color.ORANGE)

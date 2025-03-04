@@ -179,7 +179,7 @@ public class CommandVerification extends Command {
 
                                 buttonInteraction.replyEmbeds(getEmbed()
                                         .simpleAuthoredEmbed()
-                                        .setAuthor(getLanguageManager().get("common.verification.kick.success"), "https://fluffici.eu", ICON_CIRCLE_SLASHED)
+                                        .setAuthor(getLanguageManager().get("common.verification.kick.success"), "https://fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                                         .setDescription(getLanguageManager().get("common.verification.kick.success.description", String.join("\n * ", memberGlobalNames), reason))
                                         .build()
                                 ).setEphemeral(true).queue();
@@ -205,7 +205,7 @@ public class CommandVerification extends Command {
 
                 modalInteraction.replyEmbeds(this.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor(this.getLanguageManager().get("common.verification.kick.success"), "https://fluffici.eu", ICON_CIRCLE_SLASHED)
+                        .setAuthor(this.getLanguageManager().get("common.verification.kick.success"), "https://fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                         .setDescription(this.getLanguageManager().get("common.verification.kick.success.description", String.join("\n * ", memberGlobalNames), reason))
                         .build()
                 ).setEphemeral(true).queue();

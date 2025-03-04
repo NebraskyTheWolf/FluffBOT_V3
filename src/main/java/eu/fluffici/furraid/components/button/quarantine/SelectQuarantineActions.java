@@ -74,7 +74,7 @@ public class SelectQuarantineActions extends SelectMenu<StringSelectInteraction>
 
                 interaction.replyEmbeds(this.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor(this.getLanguageManager().get("common.quarantine.restore.success.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED)
+                        .setAuthor(this.getLanguageManager().get("common.quarantine.restore.success.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                         .setDescription(this.getLanguageManager().get("common.quarantine.restore.description", member.getUser().getGlobalName()))
                         .build()
                 ).setEphemeral(true).queue();
@@ -91,7 +91,7 @@ public class SelectQuarantineActions extends SelectMenu<StringSelectInteraction>
 
                     modalInteraction.replyEmbeds(this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("common.quarantine.kick.success.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED)
+                            .setAuthor(this.getLanguageManager().get("common.quarantine.kick.success.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                             .setDescription(this.getLanguageManager().get("common.quarantine.kick.description", member.getUser().getGlobalName(), reason))
                             .build()
                     ).setEphemeral(true).queue();
@@ -114,7 +114,7 @@ public class SelectQuarantineActions extends SelectMenu<StringSelectInteraction>
 
                     modalInteraction.replyEmbeds(this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("common.quarantine.ban.success.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED)
+                            .setAuthor(this.getLanguageManager().get("common.quarantine.ban.success.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                             .setDescription(this.getLanguageManager().get("common.quarantine.ban.description", member.getUser().getGlobalName(), reason))
                             .build()
                     ).setEphemeral(true).queue();

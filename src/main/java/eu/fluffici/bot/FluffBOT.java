@@ -47,6 +47,7 @@ import com.pusher.client.connection.ConnectionState;
 import com.pusher.client.connection.ConnectionStateChange;
 import com.sun.net.httpserver.HttpServer;
 import eu.fluffici.Benchmark;
+import eu.fluffici.bot.api.EnvironmentProperty;
 import eu.fluffici.bot.api.Instance;
 import eu.fluffici.bot.api.chart.DefaultCharts;
 import eu.fluffici.bot.api.events.PusherCallback;
@@ -116,9 +117,7 @@ public class FluffBOT extends Instance {
     private DatabaseConnector databaseConnector;;
 
     private ConfigManager configManager;
-    private Properties defaultConfig;
-    private Properties emojiConfig;
-    private Properties channelConfig;
+    private EnvironmentProperty defaultConfig;
     private Properties gitProperties;
     private Embed embed;
 
@@ -166,7 +165,7 @@ public class FluffBOT extends Instance {
     @Setter
     private long reconnectStartTime = 0;
 
-    private final Pusher pusher = new Pusher("e96ac9c8809b190f796d", new PusherOptions().setCluster("eu"));
+    private final Pusher pusher = new Pusher(System.getenv("PUSHER_API_KEY"), new PusherOptions().setCluster("eu"));
     private final List<Command> commandsRegistry = new ArrayList<>();
     private final DefaultCharts defaultCharts = new DefaultCharts();
     private final Benchmark benchmark = new Benchmark();
@@ -191,9 +190,7 @@ public class FluffBOT extends Instance {
 
         this.configManager = new ConfigManager();
         this.configManager.loadConfig();
-        this.defaultConfig = this.configManager.getConfig("default");
-        this.emojiConfig = this.configManager.getConfig("emoji");
-        this.channelConfig = this.configManager.getConfig("channels");
+        this.defaultConfig = new EnvironmentProperty("FLUFFBOT");
         this.gitProperties = this.configManager.getConfig("versioning");
 
         String mysqlHost = this.defaultConfig.getProperty("mysqlHost");
@@ -202,7 +199,7 @@ public class FluffBOT extends Instance {
         String mysqlPass = this.defaultConfig.getProperty("mysqlPassword");
 
         this.gameServiceManager = new GameServiceManager(
-                String.format("jdbc:mysql://%s:3306/%s?verifyServerCertificate=false&useSSL=false&requireSSL=false&allowPublicKeyRetrieval=true", mysqlHost, mysqlDb),
+                String.format("jdbc:mysql://%s/%s?verifyServerCertificate=false&useSSL=false&requireSSL=false&allowPublicKeyRetrieval=true", mysqlHost, mysqlDb),
                 mysqlUser,
                 mysqlPass,
                 1,
@@ -313,26 +310,30 @@ public class FluffBOT extends Instance {
             this.rewardManager.init();
             this.modalManager.load();
 
-            this.pusher.connect(new ConnectionEventListener() {
-                @Override
-                public void onConnectionStateChange(ConnectionStateChange change) {
-                    logger.info("State changed from %s to %s", change.getPreviousState(), change.getCurrentState());
-                }
+            if (this.defaultConfig.hasVariable("PUSHER_API_KEY")) {
+                this.pusher.connect(new ConnectionEventListener() {
+                    @Override
+                    public void onConnectionStateChange(ConnectionStateChange change) {
+                        logger.info("State changed from %s to %s", change.getPreviousState(), change.getCurrentState());
+                    }
 
-                @Override
-                public void onError(String message, String code, Exception e) {
-                    logger.error("There was a problem connecting!", e);
-                }
-            }, ConnectionState.ALL);
+                    @Override
+                    public void onError(String message, String code, Exception e) {
+                        logger.error("There was a problem connecting!", e);
+                    }
+                }, ConnectionState.ALL);
 
-            Channel akceChannel = this.pusher.subscribe("notifications-event");
-            akceChannel.bind("create-trello", event -> this.getEventBus().post(new PusherCallback("create-trello", event)));
-            akceChannel.bind("update-trello", event -> this.getEventBus().post(new PusherCallback("update-trello", event)));
-            akceChannel.bind("remove-trello", event -> this.getEventBus().post(new PusherCallback("remove-trello", event)));
+                Channel akceChannel = this.pusher.subscribe("notifications-event");
+                akceChannel.bind("create-trello", event -> this.getEventBus().post(new PusherCallback("create-trello", event)));
+                akceChannel.bind("update-trello", event -> this.getEventBus().post(new PusherCallback("update-trello", event)));
+                akceChannel.bind("remove-trello", event -> this.getEventBus().post(new PusherCallback("remove-trello", event)));
 
-            Channel systemChannel = this.pusher.subscribe("system-event");
-            systemChannel.bind("system-restart", event -> this.getEventBus().post(new PusherCallback("system-restart", event)));
-            systemChannel.bind("system-reset", event -> this.getEventBus().post(new PusherCallback("system-reset", event)));
+                Channel systemChannel = this.pusher.subscribe("system-event");
+                systemChannel.bind("system-restart", event -> this.getEventBus().post(new PusherCallback("system-restart", event)));
+                systemChannel.bind("system-reset", event -> this.getEventBus().post(new PusherCallback("system-reset", event)));
+            } else {
+                this.logger.warn("Pusher service is not configured.");
+            }
 
             this.webServerManager.startServer();
         })).exceptionally(ex -> {
@@ -390,10 +391,10 @@ public class FluffBOT extends Instance {
 
         int errorCount = this.getLogger().getErrorCount().get();
         this.jda.getGuildById(this.defaultConfig.getProperty("main.guild"))
-                .getTextChannelById(this.channelConfig.getProperty("channel.logging"))
+                .getTextChannelById(this.defaultConfig.getProperty("channel.logging"))
                 .sendMessageEmbeds(this.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor("Shutting down initiated", "https://fluffici.eu", ICON_ALERT)
+                    .setAuthor("Shutting down initiated", "https://fluffici.eu", ICON_ALERT.getUrl())
                     .setDescription("Be aware! The discord command won't be handled anymore until restart.")
                     .addField("Error state:", (errorCount > 0 ? errorCount + " error" + (errorCount > 1 ? "(s)": "") + " detected." : "Nominal"), true)
                     .setTimestamp(Instant.now())

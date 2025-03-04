@@ -57,7 +57,7 @@ public class CommandFeedback extends FCommand {
                         .build()
         )), GameId.generateId(), (modalInteraction, acceptanceId) -> {
             EmbedBuilder feedbackMessage = this.getEmbed().simpleAuthoredEmbed();
-            feedbackMessage.setAuthor(this.getLanguageManager().get("command.feedback.title", modalInteraction.getValue("row:subject").getAsString()), "https://frdb.fluffici.eu", ICON_FILE);
+            feedbackMessage.setAuthor(this.getLanguageManager().get("command.feedback.title", modalInteraction.getValue("row:subject").getAsString()), "https://frdb.fluffici.eu", ICON_FILE.getUrl());
             feedbackMessage.setDescription(
                     """
                     **Feedback**:
@@ -70,7 +70,7 @@ public class CommandFeedback extends FCommand {
             feedbackMessage.setThumbnail(interaction.getUser().getAvatarUrl());
             feedbackMessage.addField(this.getLanguageManager().get("common.user.id"), interaction.getUser().getId(), false);
             feedbackMessage.addField(this.getLanguageManager().get("common.user.name"), interaction.getUser().getGlobalName(), false);
-            feedbackMessage.setFooter("From: ".concat(interaction.getGuild().getName()), ICON_QUESTION_MARK);
+            feedbackMessage.setFooter("From: ".concat(interaction.getGuild().getName()), ICON_QUESTION_MARK.getUrl());
             feedbackMessage.setTimestamp(Instant.now());
 
             interaction.getJDA().getTextChannelById(1255326402652143666L).sendMessageEmbeds(feedbackMessage.build()).queue();

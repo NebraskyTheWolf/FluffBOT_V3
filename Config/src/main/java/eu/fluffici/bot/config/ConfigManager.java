@@ -44,39 +44,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 public class ConfigManager {
-    private String ENV = System.getenv("ENV");
-
     private final Map<String, Properties> configs = new HashMap<>();
     private final Object[] lock = new Object[] {};
 
     @SneakyThrows
     public void loadConfig() {
-        if (ENV == null || ENV.isEmpty())
-            ENV = "develop";
-
         synchronized (this.lock) {
             this.configs.clear();
-
-            InputStream defaultInput = this.getClass()
-                    .getClassLoader()
-                    .getResourceAsStream("config/default_config_" + this.ENV +".properties");
-            Properties defaultProp = new Properties();
-            defaultProp.load(defaultInput);
-            this.configs.put("default", defaultProp);
-
-            InputStream emojisInput = this.getClass()
-                    .getClassLoader()
-                    .getResourceAsStream("config/emoji_config_" + this.ENV +".properties");
-            Properties emojiProp = new Properties();
-            emojiProp.load(emojisInput);
-            this.configs.put("emoji", emojiProp);
-
-            InputStream channelInputs = this.getClass()
-                    .getClassLoader()
-                    .getResourceAsStream("config/channels_config_" + this.ENV +".properties");
-            Properties channelProp = new Properties();
-            channelProp.load(channelInputs);
-            this.configs.put("channels", channelProp);
 
             InputStream gitProperties = this.getClass()
                     .getClassLoader()

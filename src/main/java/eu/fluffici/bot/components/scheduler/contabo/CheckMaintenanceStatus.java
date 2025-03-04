@@ -45,12 +45,12 @@ public class CheckMaintenanceStatus extends Task {
                     FluffBOT.getInstance().getGameServiceManager().addMaintenance(maintenanceInfo.getId());
 
                     EmbedBuilder maintenance = FluffBOT.getInstance().getEmbed().simpleAuthoredEmbed();
-                    maintenance.setAuthor("Scheduled maintenance for the VPS - #" + maintenanceInfo.getId(), "https://contabo-status.com", ICON_ALERT);
+                    maintenance.setAuthor("Scheduled maintenance for the VPS - #" + maintenanceInfo.getId(), "https://contabo-status.com", ICON_ALERT.getUrl());
                     maintenance.setColor(Color.RED);
                     maintenance.setDescription(maintenanceInfo.getDetails());
                     maintenance.setFooter("This maintenance has been scheduled by Contabo");
 
-                    FluffBOT.getInstance().getJda().getTextChannelById(FluffBOT.getInstance().getChannelConfig().getProperty("channel.logging")).sendMessageEmbeds(maintenance.build())
+                    FluffBOT.getInstance().getJda().getTextChannelById(FluffBOT.getInstance().getDefaultConfig().getProperty("channel.logging")).sendMessageEmbeds(maintenance.build())
                             .addActionRow(
                                     Button.link("https://contabo-status.com", "Contabo Status")
                             )

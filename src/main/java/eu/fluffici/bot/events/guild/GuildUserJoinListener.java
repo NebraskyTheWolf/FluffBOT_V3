@@ -82,8 +82,8 @@ public class GuildUserJoinListener extends ListenerAdapter {
 
         event.getGuild().addRoleToMember(event.getUser(), event.getGuild().getRoleById(this.instance.getDefaultConfig().getProperty("roles.unverified")));
 
-        event.getGuild().getTextChannelById(this.instance.getChannelConfig().getProperty("channel.welcome")).sendMessageEmbeds(this.instance.getEmbed().simpleAuthoredEmbed()
-                .setAuthor(String.format("%s se připojil/a", event.getMember().getUser().getEffectiveName()), "https://fluffici.eu", ICON_USER_PLUS)
+        event.getGuild().getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.welcome")).sendMessageEmbeds(this.instance.getEmbed().simpleAuthoredEmbed()
+                .setAuthor(String.format("%s se připojil/a", event.getMember().getUser().getEffectiveName()), "https://fluffici.eu", ICON_USER_PLUS.getUrl())
                 .setColor(Color.GREEN)
                 .setFooter(event.getMember().getId())
                 .setThumbnail(event.getUser().getAvatarUrl())
@@ -182,10 +182,10 @@ public class GuildUserJoinListener extends ListenerAdapter {
             }
 
             if (usedInvite != null) {
-                event.getJDA().getGuildById(this.instance.getDefaultConfig().getProperty("main.guild")).getTextChannelById(this.instance.getChannelConfig().getProperty("channel.invite"))
+                event.getJDA().getGuildById(this.instance.getDefaultConfig().getProperty("main.guild")).getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.invite"))
                         .sendMessageEmbeds(this.instance.getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(this.instance.getLanguageManager().get("common.invite.used", event.getUser().getGlobalName()), "https://fluffici.eu", ICON_QUESTION_MARK)
+                                .setAuthor(this.instance.getLanguageManager().get("common.invite.used", event.getUser().getGlobalName()), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                                 .setThumbnail(event.getUser().getAvatarUrl())
                                 .setDescription(this.instance.getLanguageManager().get("common.invite.used.desc",
                                         event.getUser().getAsMention(), event.getUser().getGlobalName(),

@@ -137,7 +137,7 @@ public class CommandRelationship extends Command {
         Message message = target.openPrivateChannel().complete().sendMessageEmbeds(
                         this.getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(this.getLanguageManager().get("common.relationship.invite", interaction.getUser().getEffectiveName()), "https://fluffici.eu", ICON_HEART)
+                                .setAuthor(this.getLanguageManager().get("common.relationship.invite", interaction.getUser().getEffectiveName()), "https://fluffici.eu", ICON_HEART.getUrl())
                                 .setDescription(this.getLanguageManager().get("common.relationship.invite.desc"))
                                 .build()
                 ).mention(target)
@@ -163,7 +163,7 @@ public class CommandRelationship extends Command {
         interaction.replyEmbeds(
                 this.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor(this.getLanguageManager().get("common.relationship.remove.title", interaction.getUser().getName()), "https://fluffici.eu", ICON_CIRCLE_MINUS)
+                        .setAuthor(this.getLanguageManager().get("common.relationship.remove.title", interaction.getUser().getName()), "https://fluffici.eu", ICON_CIRCLE_MINUS.getUrl())
                         .setDescription(this.getLanguageManager().get("common.relationship.remove.desc", target.getAsMention()))
                         .build()
         ).setEphemeral(true).queue();
@@ -223,7 +223,7 @@ public class CommandRelationship extends Command {
             interaction.replyEmbeds(
                     this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("common.relationship.lookup.title", interaction.getUser().getName()), "https://fluffici.eu", ICON_CIRCLE_MINUS)
+                            .setAuthor(this.getLanguageManager().get("common.relationship.lookup.title", interaction.getUser().getName()), "https://fluffici.eu", ICON_CIRCLE_MINUS.getUrl())
                             .setDescription(this.getLanguageManager().get("common.relationship.lookup.desc"))
                             .addField(this.getLanguageManager().get("common.relationship.lookup.field"), "No relationships found", false)
                             .build()
@@ -246,7 +246,7 @@ public class CommandRelationship extends Command {
             interaction.replyEmbeds(
                     this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("common.relationship.lookup.title", interaction.getUser().getName()), "https://fluffici.eu", ICON_HEART)
+                            .setAuthor(this.getLanguageManager().get("common.relationship.lookup.title", interaction.getUser().getName()), "https://fluffici.eu", ICON_HEART.getUrl())
                             .setDescription(this.getLanguageManager().get("common.relationship.lookup.desc"))
                             .addField(this.getLanguageManager().get("common.relationship.lookup.field"), userMentionsString, false)
                             .build()

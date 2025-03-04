@@ -117,7 +117,7 @@ public class CommandUpvote extends Command {
             if (channel != null) {
                 channel.sendMessageEmbeds(this.getEmbed()
                         .simpleAuthoredEmbed()
-                                .setAuthor(this.getLanguageManager().get("command.upvote.title", interaction.getUser().getGlobalName(), user.getGlobalName()), "https://fluffici.eu", ICON_UPVOTE)
+                                .setAuthor(this.getLanguageManager().get("command.upvote.title", interaction.getUser().getGlobalName(), user.getGlobalName()), "https://fluffici.eu", ICON_UPVOTE.getUrl())
                                 .setThumbnail(user.getAvatarUrl())
                                 .setTimestamp(Instant.now())
                         .build()

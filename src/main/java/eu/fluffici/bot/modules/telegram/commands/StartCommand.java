@@ -31,7 +31,7 @@ public class StartCommand extends BotCommand {
     private final FluffBOT instance;
 
     public StartCommand(FluffBOT instance) {
-        super("start", "This command will help you linking your fluffici account");
+        super("start", "This command will help you linking your Fluffici account");
 
         this.instance = instance;
     }

@@ -155,7 +155,7 @@ public class CommandLeaderboard extends Command {
     private void generateImage(CommandInteraction interaction, List<LeaderboardBuilder> topUsers, String option) {
         EmbedBuilder builder = this.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.getLanguageManager().get("common.leaderboard"), "https://fluffici.eu", ICON_SORT)
+                .setAuthor(this.getLanguageManager().get("common.leaderboard"), "https://fluffici.eu", ICON_SORT.getUrl())
                 .setDescription(this.getLanguageManager().get("common.leaderboard.desc"));
 
         CompletableFuture.runAsync(() -> {

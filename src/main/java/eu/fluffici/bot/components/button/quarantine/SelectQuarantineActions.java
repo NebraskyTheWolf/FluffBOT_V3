@@ -78,7 +78,7 @@ public class SelectQuarantineActions extends SelectMenu<StringSelectInteraction>
 
                     modalInteraction.replyEmbeds(this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("common.quarantine.kick.success.title"), "https://fluffici.eu", ICON_CIRCLE_SLASHED)
+                            .setAuthor(this.getLanguageManager().get("common.quarantine.kick.success.title"), "https://fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                             .setDescription(this.getLanguageManager().get("common.quarantine.kick.description", member.getUser().getGlobalName(), reason))
                             .build()
                     ).setEphemeral(true).queue();
@@ -107,7 +107,7 @@ public class SelectQuarantineActions extends SelectMenu<StringSelectInteraction>
 
                     modalInteraction.replyEmbeds(this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("common.quarantine.ban.success.title"), "https://fluffici.eu", ICON_CIRCLE_SLASHED)
+                            .setAuthor(this.getLanguageManager().get("common.quarantine.ban.success.title"), "https://fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                             .setDescription(this.getLanguageManager().get("common.quarantine.ban.description", member.getUser().getGlobalName(), reason))
                             .build()
                     ).setEphemeral(true).queue();

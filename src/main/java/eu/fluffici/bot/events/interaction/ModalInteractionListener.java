@@ -74,7 +74,7 @@ public class ModalInteractionListener extends ListenerAdapter {
 
             event.getInteraction().replyEmbeds(this.instance.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(this.instance.getLanguageManager().get("common.interaction.restricted"), "https://fluffici.eu", ICON_CIRCLE_MINUS)
+                    .setAuthor(this.instance.getLanguageManager().get("common.interaction.restricted"), "https://fluffici.eu", ICON_CIRCLE_MINUS.getUrl())
                     .setDescription(this.instance.getLanguageManager().get("common.interaction.restricted.desc", restrictedAccess.getReason()))
                     .setFooter(author.getGlobalName(), author.getAvatarUrl())
                     .setColor(Color.RED)

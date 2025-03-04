@@ -175,7 +175,7 @@ public class CommandChannel extends Command {
 
                             interaction.replyEmbeds(getEmbed()
                                     .simpleAuthoredEmbed()
-                                    .setAuthor(getLanguageManager().get("channel.auto.renewal.success.title"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                                    .setAuthor(getLanguageManager().get("channel.auto.renewal.success.title"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                                     .setDescription(getLanguageManager().get("channel.auto.renewal.success.description", interaction.getJDA().getVoiceChannelById(dummyChannel.getChannelId()).getName(), discordFormattedNextDueDate))
                                     .setFooter(getLanguageManager().get("channel.auto.renewal.success.footer"))
                                     .setColor(Color.GREEN)
@@ -216,7 +216,7 @@ public class CommandChannel extends Command {
 
             EmbedBuilder embedBuilder = this.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(voiceChannel != null ? voiceChannel.getName() : "Neznámý", "https://fluffici.eu", ICON_FILE)
+                    .setAuthor(voiceChannel != null ? voiceChannel.getName() : "Neznámý", "https://fluffici.eu", ICON_FILE.getUrl())
                     .setFooter("Pro více informací nás kontaktuj přes tickety.")
                     .setTimestamp(Instant.now());
 
@@ -280,7 +280,7 @@ public class CommandChannel extends Command {
         interaction.replyEmbeds(
                 this.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor(this.getLanguageManager().get("command.channel.create.confirm"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                        .setAuthor(this.getLanguageManager().get("command.channel.create.confirm"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                         .setDescription(description)
                         .setFooter(this.getLanguageManager().get("command.channel.create.footer"))
                         .build()
@@ -483,10 +483,10 @@ public class CommandChannel extends Command {
         public MessageEmbed buildError(String description) {
             return this.instance.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(this.instance.getLanguageManager().get("common.error"), "https://fluffici.eu", ICON_ALERT_CIRCLE)
+                    .setAuthor(this.instance.getLanguageManager().get("common.error"), "https://fluffici.eu", ICON_ALERT_CIRCLE.getUrl())
                     .setDescription(description)
                     .setTimestamp(Instant.now())
-                    .setFooter(this.instance.getLanguageManager().get("common.error.footer"), ICON_QUESTION_MARK)
+                    .setFooter(this.instance.getLanguageManager().get("common.error.footer"), ICON_QUESTION_MARK.getUrl())
                     .build();
         }
 
@@ -494,7 +494,7 @@ public class CommandChannel extends Command {
         public MessageEmbed buildSuccess(String description) {
             return this.instance.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(this.instance.getLanguageManager().get("common.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                    .setAuthor(this.instance.getLanguageManager().get("common.success"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                     .setDescription(description)
                     .setTimestamp(Instant.now())
                     .build();

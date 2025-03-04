@@ -67,7 +67,7 @@ public class MemberBoostListener extends ListenerAdapter {
 
         // We check if the main guild is available or exist in the cache.
         if (guild != null) {
-            TextChannel announcement = guild.getTextChannelById(this.instance.getChannelConfig().getProperty("channel.level"));
+            TextChannel announcement = guild.getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.level"));
 
             // Preparing the announcement message
             EmbedBuilder announcementMessage = this.instance.getEmbed()

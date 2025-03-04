@@ -65,7 +65,7 @@ public class MemberVoiceChatListener extends ListenerAdapter {
         if (!FluffBOT.getInstance().getDefaultConfig().getProperty("main.guild").equals(event.getGuild().getId()))
             return;
         if (event.getChannelJoined() != null) {
-            boolean isAFK = event.getChannelJoined().getId().equals(FluffBOT.getInstance().getChannelConfig().getProperty("channel.afk", "0"));
+            boolean isAFK = event.getChannelJoined().getId().equals(FluffBOT.getInstance().getDefaultConfig().getProperty("channel.afk", "0"));
             if (isAFK)
                 return;
 

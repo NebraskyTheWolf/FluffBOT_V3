@@ -29,7 +29,6 @@ import eu.fluffici.bot.api.hooks.furraid.BlacklistBuilder;
 import eu.fluffici.bot.api.hooks.furraid.WhitelistBuilder;
 import eu.fluffici.bot.api.interactions.WebRoute;
 import eu.fluffici.furraid.FurRaidDB;
-import eu.fluffici.furraid.server.users.FGetUserRoute;
 import lombok.SneakyThrows;
 import net.dv8tion.jda.api.JDA;
 import net.dv8tion.jda.api.OnlineStatus;
@@ -244,7 +243,7 @@ public class FGuildRoute extends WebRoute {
 
                 ticketGate.sendMessageEmbeds(FurRaidDB.getInstance().getEmbed()
                         .simpleAuthoredEmbed()
-                                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.new_ticket.title"), "https://frdb.fluffici.eu", ICON_FILE)
+                                .setAuthor(FurRaidDB.getInstance().getLanguageManager().get("common.new_ticket.title"), "https://frdb.fluffici.eu", ICON_FILE.getUrl())
                                 .setDescription(FurRaidDB.getInstance().getLanguageManager().get("common.new_ticket.desc", "<:ic_ticket:1247537159045648424>"))
                                 .setColor(Color.decode("#4CAF50"))
                                 .setFooter("FurRaidDB", FurRaidDB.getInstance().getJda().getSelfUser().getAvatarUrl())
@@ -476,7 +475,7 @@ public class FGuildRoute extends WebRoute {
 
                         ticketChannel.sendMessageEmbeds(FurRaidDB.getInstance().getEmbed()
                                 .simpleAuthoredEmbed()
-                                        .setAuthor("User added to the ticket", "https://frdb.fluffici.eu", ICON_USER_PLUS)
+                                        .setAuthor("User added to the ticket", "https://frdb.fluffici.eu", ICON_USER_PLUS.getUrl())
                                         .setDescription(
                                                 """
                                                 %s has been added to the ticket by %s from the [Dashboard](https://frdb.fluffici.eu/dashboard)
@@ -497,7 +496,7 @@ public class FGuildRoute extends WebRoute {
 
                         ticketChannel.sendMessageEmbeds(FurRaidDB.getInstance().getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor("User removed from the ticket", "https://frdb.fluffici.eu", ICON_USER_PLUS)
+                                .setAuthor("User removed from the ticket", "https://frdb.fluffici.eu", ICON_USER_PLUS.getUrl())
                                 .setDescription(
                                         """
                                         %s has been removed from ticket by %s from the [Dashboard](https://frdb.fluffici.eu/dashboard)
@@ -622,7 +621,7 @@ public class FGuildRoute extends WebRoute {
                 if (privateChannel.canTalk()) {
                     privateChannel.sendMessageEmbeds(FurRaidDB.getInstance().getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor("Verification Result from " + guild.getName(), "https://frdb.fluffici.eu", ICON_CIRCLE_MINUS)
+                            .setAuthor("Verification Result from " + guild.getName(), "https://frdb.fluffici.eu", ICON_CIRCLE_MINUS.getUrl())
                             .setTitle("Verification Denied")
                             .setDescription(String.format(
                                     """

@@ -77,7 +77,7 @@ public class ContextReport extends Context<MessageContextInteraction> {
 
         TextChannel staffChannel = interaction.getGuild()
                 .getTextChannelById(FluffBOT.getInstance()
-                .getChannelConfig()
+                .getDefaultConfig()
                 .getProperty("channel.staff"));
 
        List<SanctionBean> sanctions = FluffBOT.getInstance()
@@ -109,7 +109,7 @@ public class ContextReport extends Context<MessageContextInteraction> {
 
                        staffChannel.sendMessageEmbeds(getEmbed()
                                .simpleAuthoredEmbed()
-                               .setAuthor(getLanguageManager().get("context.message.report"), "https://fluffici.eu", ICON_ALERT)
+                               .setAuthor(getLanguageManager().get("context.message.report"), "https://fluffici.eu", ICON_ALERT.getUrl())
                                .setThumbnail(message.getAuthor().getAvatarUrl())
                                .setDescription(getLanguageManager().get("common.message.content", message.getContentRaw()))
                                .addField(getLanguageManager().get("common.report.by"), interaction.getUser().getAsMention(), false)
@@ -123,7 +123,7 @@ public class ContextReport extends Context<MessageContextInteraction> {
 
                        interaction.replyEmbeds(getEmbed()
                                .simpleAuthoredEmbed()
-                               .setAuthor(getLanguageManager().get("context.message.reported"), "https://fluffici.eu", ICON_ALERT)
+                               .setAuthor(getLanguageManager().get("context.message.reported"), "https://fluffici.eu", ICON_ALERT.getUrl())
                                .setDescription(getLanguageManager().get("common.message.reported.desc", message.getAuthor().getAsMention()))
                                .setTimestamp(Instant.now())
                                .build()

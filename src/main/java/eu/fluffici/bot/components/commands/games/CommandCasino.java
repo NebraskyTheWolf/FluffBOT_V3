@@ -150,7 +150,7 @@ public class CommandCasino extends Command {
 
             interaction.replyEmbeds(this.getEmbed()
                     .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("command.casino.slot.won"), "https://fluffici.eu", ICON_MEDAL)
+                            .setAuthor(this.getLanguageManager().get("command.casino.slot.won"), "https://fluffici.eu", ICON_MEDAL.getUrl())
                             .setDescription(this.getLanguageManager().get("command.casino.slot.result", slotResult))
                             .addField(this.getLanguageManager().get("command.casino.slot.winning"), NumberFormat.getNumberInstance().format(winnings), true)
                     .build()
@@ -220,7 +220,7 @@ public class CommandCasino extends Command {
             interaction.replyEmbeds(
                     this.getEmbed()
                             .simpleAuthoredEmbed()
-                            .setAuthor(this.getLanguageManager().get("command.casino.blackjack.hit_or_stand"), "https://fluffici.eu", ICON_QUESTION_MARK)
+                            .setAuthor(this.getLanguageManager().get("command.casino.blackjack.hit_or_stand"), "https://fluffici.eu", ICON_QUESTION_MARK.getUrl())
                             .setDescription(this.getLanguageManager().get("command.casino.blackjack.hit_or_stand.desc"))
                             .build()
             ).addActionRow(
@@ -277,7 +277,7 @@ public class CommandCasino extends Command {
 
         interaction.replyEmbeds(this.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(this.getLanguageManager().get("command.casino.roulette.result"), "https://fluffici.eu", isRed ? ICON_MEDAL : ICON_ALERT)
+                .setAuthor(this.getLanguageManager().get("command.casino.roulette.result"), "https://fluffici.eu", isRed ? ICON_MEDAL.getUrl() : ICON_ALERT.getUrl())
                 .setDescription(this.getLanguageManager().get("command.casino.roulette.result.desc", winningNumber, isRed ? "Red" : "Black"))
                 .addField(this.getLanguageManager().get("command.casino.roulette.payout"), NumberFormat.getNumberInstance().format(payout), true)
                 .build()
@@ -436,7 +436,7 @@ public class CommandCasino extends Command {
             if (buttonid.equals("button:rules")) {
                 event.getInteraction().replyEmbeds(FluffBOT.getInstance().getEmbed()
                         .simpleAuthoredEmbed()
-                                .setAuthor("Blackjack Rules", "https://fluffici.eu", ICON_NOTE)
+                                .setAuthor("Blackjack Rules", "https://fluffici.eu", ICON_NOTE.getUrl())
                                 .setDescription(
                                         """     
                                         - **Objective**: The goal is to beat the dealer's hand without going over 21.
@@ -506,7 +506,7 @@ public class CommandCasino extends Command {
                     .getInstance()
                     .getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(FluffBOT.getInstance().getLanguageManager().get("command.casino.blackjack.result"), "https://fluffici.eu", ICON_MEDAL)
+                    .setAuthor(FluffBOT.getInstance().getLanguageManager().get("command.casino.blackjack.result"), "https://fluffici.eu", ICON_MEDAL.getUrl())
                     .setImage("attachment://".concat(gameId).concat("_result.png"));
 
             CasinoGameBuilder currentGame = FluffBOT.getInstance()
@@ -596,7 +596,7 @@ public class CommandCasino extends Command {
             return FluffBOT.getInstance()
                     .getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.casino.fail"), "https://fluffici.eu", ICON_WARNING)
+                    .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.casino.fail"), "https://fluffici.eu", ICON_WARNING.getUrl())
                     .setDescription(description)
                     .setTimestamp(Instant.now())
                     .build();
@@ -632,7 +632,7 @@ public class CommandCasino extends Command {
         return FluffBOT.getInstance()
                 .getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.casino.fail"), "https://fluffici.eu", ICON_WARNING)
+                .setAuthor(FluffBOT.getInstance().getLanguageManager().get("common.casino.fail"), "https://fluffici.eu", ICON_WARNING.getUrl())
                 .setDescription(description)
                 .setTimestamp(Instant.now())
                 .build();

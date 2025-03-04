@@ -65,8 +65,8 @@ public class GuildUserLeftListener extends ListenerAdapter {
         if (!this.instance.getDefaultConfig().getProperty("main.guild").equals(event.getGuild().getId()))
             return;
 
-        event.getGuild().getTextChannelById(this.instance.getChannelConfig().getProperty("channel.goodbye")).sendMessageEmbeds(this.instance.getEmbed().simpleAuthoredEmbed()
-                .setAuthor(String.format("%s se odpojil/a", event.getMember().getUser().getEffectiveName()), "https://fluffici.eu", ICON_USER_X)
+        event.getGuild().getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.goodbye")).sendMessageEmbeds(this.instance.getEmbed().simpleAuthoredEmbed()
+                .setAuthor(String.format("%s se odpojil/a", event.getMember().getUser().getEffectiveName()), "https://fluffici.eu", ICON_USER_X.getUrl())
                 .setColor(Color.RED)
                 .setFooter(event.getMember().getId())
                 .setThumbnail(event.getUser().getAvatarUrl())

@@ -228,7 +228,7 @@ public class GuildUserJoinListener extends ListenerAdapter {
         FurRaidConfig.WelcomingFeature welcomingFeature = guildSettings.getConfig().getFeatures().getWelcoming();
 
         welcomeChannel.sendMessageEmbeds(this.instance.getEmbed().simpleAuthoredEmbed()
-                .setAuthor(this.instance.getLanguageManager().get("event.join.welcome.title", event.getMember().getEffectiveName()), "https://frdb.fluffici.eu", ICON_USER_PLUS)
+                .setAuthor(this.instance.getLanguageManager().get("event.join.welcome.title", event.getMember().getEffectiveName()), "https://frdb.fluffici.eu", ICON_USER_PLUS.getUrl())
                 .setColor(Color.GREEN)
                 .setDescription(welcomingFeature.getSettings().getJoinMessage())
                 .setFooter(event.getMember().getId())
@@ -250,7 +250,7 @@ public class GuildUserJoinListener extends ListenerAdapter {
 
         EmbedBuilder blacklistedMessage = this.instance.getEmbed().simpleAuthoredEmbed();
         blacklistedMessage.setColor(Color.decode("#9412d5"));
-        blacklistedMessage.setAuthor(this.instance.getLanguageManager().get("common.globally_blacklisted.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED);
+        blacklistedMessage.setAuthor(this.instance.getLanguageManager().get("common.globally_blacklisted.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl());
         blacklistedMessage.setDescription(this.instance.getLanguageManager().get("common.globally_blacklisted.description"));
 
         if (blacklist.getAttachmentUrl() != null)
@@ -284,7 +284,7 @@ public class GuildUserJoinListener extends ListenerAdapter {
 
         EmbedBuilder blacklistedMessage = this.instance.getEmbed().simpleAuthoredEmbed();
         blacklistedMessage.setColor(Color.decode("#9412d5"));
-        blacklistedMessage.setAuthor(this.instance.getLanguageManager().get("common.locally_blacklisted.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED);
+        blacklistedMessage.setAuthor(this.instance.getLanguageManager().get("common.locally_blacklisted.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl());
         blacklistedMessage.setDescription(this.instance.getLanguageManager().get("common.locally_blacklisted.description"));
         blacklistedMessage.setThumbnail(event.getUser().getAvatarUrl());
         blacklistedMessage.setTimestamp(Instant.now());

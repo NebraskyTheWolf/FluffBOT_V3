@@ -69,7 +69,7 @@ public class ReminderRemind extends ButtonBuilder {
 
         EmbedBuilder message = this.getEmbed().simpleAuthoredEmbed();
         message.setColor(Color.RED);
-        message.setAuthor(this.getLanguageManager().get("button.remind.message.title"), "https://fluffici.eu", ICON_WARNING);
+        message.setAuthor(this.getLanguageManager().get("button.remind.message.title"), "https://fluffici.eu", ICON_WARNING.getUrl());
         message.setDescription(this.getLanguageManager().get("button.remind.message.desc", timestamp.toLocalDateTime().format(DateTimeFormatter.ofPattern("dd-MMMM-yyyy HH:mm:ss"))));
         message.setFooter(this.getLanguageManager().get("button.remind.message.footer"));
         message.setTimestamp(Instant.now());

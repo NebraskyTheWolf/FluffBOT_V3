@@ -473,7 +473,7 @@ public class CommandFursona extends Command {
                 characterEmbed.addField(this.getLanguageManager().get("command.fursona.create.pronouns"), character.getCharacterPronouns(), true);
 
             if (character.getCharacterQuote() != null)
-                characterEmbed.setFooter(character.getCharacterQuote(), ICON_BOOK);
+                characterEmbed.setFooter(character.getCharacterQuote(), ICON_BOOK.getUrl());
             characterEmbed.setTimestamp(Instant.now());
 
             interaction.replyEmbeds(characterEmbed.build()).queue();

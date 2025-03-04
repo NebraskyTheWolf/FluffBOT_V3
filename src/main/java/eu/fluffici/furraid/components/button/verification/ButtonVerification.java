@@ -141,7 +141,7 @@ public class ButtonVerification extends ButtonBuilder {
 
             // Preparing the form to be sent
             EmbedBuilder verificationForm = getEmbed().simpleAuthoredEmbed();
-            verificationForm.setAuthor(getLanguageManager().get("button.verification.form.title", modalInteraction.getUser().getGlobalName()), "https://bot.fluffici.eu", ICON_QUESTION_MARK);
+            verificationForm.setAuthor(getLanguageManager().get("button.verification.form.title", modalInteraction.getUser().getGlobalName()), "https://bot.fluffici.eu", ICON_QUESTION_MARK.getUrl());
 
             List<VerificationParser.Question> answers = new ArrayList<>();
 
@@ -220,7 +220,7 @@ public class ButtonVerification extends ButtonBuilder {
 
             modalInteraction.replyEmbeds(getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor("Successfully Sent", "https://frdb.fluffici.eu", ICON_FOLDER)
+                    .setAuthor("Successfully Sent", "https://frdb.fluffici.eu", ICON_FOLDER.getUrl())
                     .setDescription("Your verification request has been sent, please be patient.")
                     .setTimestamp(Instant.now())
                     .setColor(Color.GREEN)

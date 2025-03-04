@@ -39,17 +39,23 @@ public class HomeRoute extends WebRoute {
     @SneakyThrows
     public void onRequest(HttpExchange request) {
         JsonArray developers = new JsonArray();
-        developers.add("Main Developer: Vakea <vakea@fluffici.eu>");
+        developers.add("Main Developer: Vakea <alex.leroy8303@seznam.cz>");
 
         JsonArray contributors = new JsonArray();
         contributors.add("Translator: Asherro <asherro@fluffici.eu>");
+        contributors.add("Ideas: Exibit");
+        contributors.add("Ideas: Vitaa");
+        contributors.add("Ideas: Krab aka Kyle");
+        contributors.add("Ideas: Emeecc");
+        contributors.add("Ideas: Vøjstřík");
+        contributors.add("Global Project Idea: Technik");
 
         JsonObject contact = new JsonObject();
-        contact.addProperty("owner", "Fluffici, z.s.");
-        contact.addProperty("email", "administrace@fluffici.eu");
+        contact.addProperty("owner", FluffBOT.getInstance().getDefaultConfig().getProperty("AUTHOR_COMPANY", "Fluffici, z.s."));
+        contact.addProperty("email", FluffBOT.getInstance().getDefaultConfig().getProperty("AUTHOR_EMAIL", "administrace@fluffici.eu"));
 
         JsonObject details = new JsonObject();
-        details.addProperty("application", "FurRaidDB Data Server");
+        details.addProperty("application", FluffBOT.getInstance().getDefaultConfig().getProperty("API_NAME", "FluffBOT Data Server"));
         details.addProperty("version", FluffBOT.getInstance().getGitProperties().getProperty("git.build.version", "unofficial"));
         details.add("contact", contact);
         details.add("developers", developers);

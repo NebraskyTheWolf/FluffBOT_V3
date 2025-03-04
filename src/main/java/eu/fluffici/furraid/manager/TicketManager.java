@@ -107,7 +107,7 @@ public class TicketManager implements ITicketManager<TicketBuilder, TicketMessag
 
             channel.sendMessageEmbeds(this.instance.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(ticketFeature.getSettings().getInitialTitle(), "https://frdb.fluffici.eu", ICON_NOTE)
+                    .setAuthor(ticketFeature.getSettings().getInitialTitle(), "https://frdb.fluffici.eu", ICON_NOTE.getUrl())
                     .setDescription(ticketFeature.getSettings().getInitialMessage())
                     .build()
             ).addActionRow(
@@ -191,7 +191,7 @@ public class TicketManager implements ITicketManager<TicketBuilder, TicketMessag
                 }).collect(Collectors.toList()).reversed();
 
         EmbedBuilder closingMessage = new EmbedBuilder();
-        closingMessage.setAuthor("Ticket closed", "https://frdb.fluffici.eu", ICON_FILE);
+        closingMessage.setAuthor("Ticket closed", "https://frdb.fluffici.eu", ICON_FILE.getUrl());
         closingMessage.addField("Ticket Owner", ticketOwner.getAsMention(), true);
         closingMessage.addField("Ticket Name", ticketChannel.getName(), true);
         closingMessage.addField("Panel Name", ticketChannel.getParentCategory().getName(), true);

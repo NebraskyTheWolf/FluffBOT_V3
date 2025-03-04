@@ -82,7 +82,7 @@ public class CommandBirthday extends Command {
                     this.getLanguageManager().get("command.birthdate.too_young")
             )).queue();
             interaction.getGuild()
-                    .getTextChannelById(this.instance.getChannelConfig().getProperty("channel.logging"))
+                    .getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.logging"))
                     .sendMessage(String.format("The user %s tried to register a birthdate under 15 years old, Birthdate: (%s-%s-%s)", "<@" + interaction.getUser().getId() + ">", day, month, year))
                     .queue();
         } else if (year < (currentYear - 130) || year >= currentYear || day <= 0 || day > 31 || month <= 0 || month > 12) {

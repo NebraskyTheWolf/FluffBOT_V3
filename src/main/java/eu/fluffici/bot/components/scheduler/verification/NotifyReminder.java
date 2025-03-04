@@ -76,7 +76,7 @@ public class NotifyReminder extends Task {
         if (channel.canTalk()) {
             channel.sendMessageEmbeds(FluffBOT.getInstance().getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(languageManager.get("task.reminder.notify.title"), "https://fluffici.eu", ICON_WARNING)
+                    .setAuthor(languageManager.get("task.reminder.notify.title"), "https://fluffici.eu", ICON_WARNING.getUrl())
                     .setDescription(languageManager.get("task.reminder.notify.description", remainingTime))
                     .setColor(Color.ORANGE)
                     .setTimestamp(Instant.now())

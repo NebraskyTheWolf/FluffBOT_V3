@@ -319,7 +319,7 @@ public class CommandGlobalBlacklist extends FCommand {
         if (blacklist != null) {
             EmbedBuilder blacklistedMessage = this.getEmbed().simpleAuthoredEmbed();
             blacklistedMessage.setColor(Color.decode("#9412d5"));
-            blacklistedMessage.setAuthor(this.getLanguageManager().get("common.globally_blacklisted.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED);
+            blacklistedMessage.setAuthor(this.getLanguageManager().get("common.globally_blacklisted.title"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl());
             blacklistedMessage.setDescription(this.getLanguageManager().get("common.globally_blacklisted.description"));
 
             if (blacklist.getAttachmentUrl() != null)
@@ -358,7 +358,7 @@ public class CommandGlobalBlacklist extends FCommand {
 
             EmbedBuilder blacklistedMessage = this.getEmbed().simpleAuthoredEmbed();
             blacklistedMessage.setColor(Color.decode("#9412d5"));
-            blacklistedMessage.setAuthor(this.getLanguageManager().get("common.globally_blacklisted.title.added", user.getGlobalName()), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED);
+            blacklistedMessage.setAuthor(this.getLanguageManager().get("common.globally_blacklisted.title.added", user.getGlobalName()), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl());
             blacklistedMessage.setDescription(this.getLanguageManager().get("common.globally_blacklisted.description.added"));
 
             if (blacklist.getAttachmentUrl() != null)

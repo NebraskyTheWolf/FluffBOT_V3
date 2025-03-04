@@ -93,7 +93,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
             // New commer card in admin
             EmbedBuilder newCommer = new EmbedBuilder();
             newCommer.setThumbnail(copiedForm.getThumbnail().getUrl());
-            newCommer.setAuthor(challenger.getUser().getGlobalName() + " byl právě ověřen!", "https://fluffici.eu", ICON_CHECKS);
+            newCommer.setAuthor(challenger.getUser().getGlobalName() + " byl právě ověřen!", "https://fluffici.eu", ICON_CHECKS.getUrl());
             newCommer.setDescription("Přivítejte ho mezi Fluffíky! :blue_heart:");
             newCommer.setColor(Color.decode("#00FF7F"));
 
@@ -128,7 +128,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
 
                                         interaction.replyEmbeds(getEmbed()
                                                 .simpleAuthoredEmbed()
-                                                .setAuthor(getLanguageManager().get("common.verification.granted.success"), "https://frdb.fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                                                .setAuthor(getLanguageManager().get("common.verification.granted.success"), "https://frdb.fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                                                 .setDescription(getLanguageManager().get("common.verification.granted.description", challenger.getAsMention()))
                                                 .build()
                                         ).setEphemeral(true).queue();
@@ -154,7 +154,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
 
                                                            interaction.replyEmbeds(getEmbed()
                                                                    .simpleAuthoredEmbed()
-                                                                   .setAuthor(getLanguageManager().get("common.verification.sanction.success"), "https://frdb.fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                                                                   .setAuthor(getLanguageManager().get("common.verification.sanction.success"), "https://frdb.fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                                                                    .setDescription(getLanguageManager().get("common.verification.sanction.description", challenger.getAsMention(), reason))
                                                                    .build()
                                                            ).setEphemeral(true).queue();
@@ -193,7 +193,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
 
                         interaction.replyEmbeds(this.getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(this.getLanguageManager().get("common.verification.granted.success"), "https://frdb.fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                                .setAuthor(this.getLanguageManager().get("common.verification.granted.success"), "https://frdb.fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                                 .setDescription(this.getLanguageManager().get("common.verification.granted.description", challenger.getAsMention()))
                                 .build()
                         ).setEphemeral(true).queue();
@@ -210,7 +210,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
                         if (privateChannel.canTalk()) {
                             privateChannel.sendMessageEmbeds(this.getEmbed()
                                     .simpleAuthoredEmbed()
-                                            .setAuthor("Verification result from " + interaction.getGuild().getName(), "https://frdb.fluffici.eu", ICON_CIRCLE_MINUS)
+                                            .setAuthor("Verification result from " + interaction.getGuild().getName(), "https://frdb.fluffici.eu", ICON_CIRCLE_MINUS.getUrl())
                                             .setTitle("Verification denied")
                                             .setDescription(String.format(
                                                     """
@@ -233,7 +233,7 @@ public class SelectVerificationActions extends SelectMenu<StringSelectInteractio
 
                         modalInteraction.replyEmbeds(this.getEmbed()
                                 .simpleAuthoredEmbed()
-                                .setAuthor(this.getLanguageManager().get("common.verification.denied"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED)
+                                .setAuthor(this.getLanguageManager().get("common.verification.denied"), "https://frdb.fluffici.eu", ICON_CIRCLE_SLASHED.getUrl())
                                 .setDescription(this.getLanguageManager().get("common.verification.denied.description", challenger.getAsMention(), reason))
                                 .build()
                         ).setEphemeral(true).queue();

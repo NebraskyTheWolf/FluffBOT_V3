@@ -143,7 +143,7 @@ public class ChannelDeletionNotice extends Task {
 
                 message = this.instance.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor(this.instance.getLanguageManager().get("channel.auto.renewal.success.title"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED)
+                        .setAuthor(this.instance.getLanguageManager().get("channel.auto.renewal.success.title"), "https://fluffici.eu", ICON_CLIPBOARD_CHECKED.getUrl())
                         .setDescription(this.instance.getLanguageManager().get("channel.auto.renewal.success.description", this.instance.getJda().getVoiceChannelById(dummyChannel.getChannelId()).getName(), discordFormattedNextDueDate))
                         .setFooter(this.instance.getLanguageManager().get("channel.auto.renewal.success.footer"))
                         .setColor(Color.GREEN)
@@ -151,7 +151,7 @@ public class ChannelDeletionNotice extends Task {
             } else {
                 message = this.instance.getEmbed()
                         .simpleAuthoredEmbed()
-                        .setAuthor(this.instance.getLanguageManager().get("channel.auto.renewal.failure.title"), "https://fluffici.eu", ICON_ALERT)
+                        .setAuthor(this.instance.getLanguageManager().get("channel.auto.renewal.failure.title"), "https://fluffici.eu", ICON_ALERT.getUrl())
                         .setDescription(this.instance.getLanguageManager().get("channel.auto.renewal.failure.description", this.instance.getJda().getVoiceChannelById(dummyChannel.getChannelId()).getName(), discordFormattedDeletionDate))
                         .setFooter(this.instance.getLanguageManager().get("channel.auto.renewal.failure.footer"))
                         .setColor(Color.RED)
@@ -160,7 +160,7 @@ public class ChannelDeletionNotice extends Task {
         } else {
             message = this.instance.getEmbed()
                     .simpleAuthoredEmbed()
-                    .setAuthor(this.instance.getLanguageManager().get("channel.deletion.notice.title"), "https://fluffici.eu", ICON_WARNING)
+                    .setAuthor(this.instance.getLanguageManager().get("channel.deletion.notice.title"), "https://fluffici.eu", ICON_WARNING.getUrl())
                     .setDescription(this.instance.getLanguageManager().get("channel.deletion.notice.description", this.instance.getJda().getVoiceChannelById(dummyChannel.getChannelId()).getName(), discordFormattedDeletionDate))
                     .setFooter(this.instance.getLanguageManager().get("channel.deletion.notice.footer"))
                     .setColor(Color.YELLOW)
@@ -172,7 +172,7 @@ public class ChannelDeletionNotice extends Task {
             if (ownerDm.canTalk()) {
                 ownerDm.sendMessageEmbeds(message).queue();
             } else {
-                this.instance.getJda().getTextChannelById(this.instance.getChannelConfig().getProperty("channel.level"))
+                this.instance.getJda().getTextChannelById(this.instance.getDefaultConfig().getProperty("channel.level"))
                         .sendMessageEmbeds(message)
                         .setContent(owner.getAsMention())
                         .queue();

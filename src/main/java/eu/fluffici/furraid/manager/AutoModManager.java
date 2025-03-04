@@ -1,10 +1,8 @@
 package eu.fluffici.furraid.manager;
 
-import com.google.gson.Gson;
 import eu.fluffici.bot.api.beans.furraid.FurRaidConfig;
 import eu.fluffici.bot.api.beans.furraid.GuildSettings;
 import eu.fluffici.bot.api.offence.furraid.OffenceType;
-import eu.fluffici.bot.database.request.RequestModerationCheck;
 import eu.fluffici.furraid.FurRaidDB;
 import lombok.NonNull;
 import lombok.SneakyThrows;
@@ -125,12 +123,14 @@ public class AutoModManager extends ListenerAdapter {
             Response response = this.client.newCall(request).execute();
             if (response.isSuccessful()) {
                 try {
-                    RequestModerationCheck check = new Gson().fromJson(response.body().string(), RequestModerationCheck.class);
-                    if (check.isStatus()) {
-                        if (check.isScam()) {
-                            this.applyAction(offenceType, message);
-                        }
-                    }
+                    /** TODO: Need workaround, the private API has been deleted.
+                     *  RequestModerationCheck check = new Gson().fromJson(response.body().string(), RequestModerationCheck.class);
+                     *                 if (check.isStatus()) {
+                     *                     if (check.isScam()) {
+                     *                         this.applyAction(offenceType, message);
+                     *                     }
+                     *                 }
+                     */
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -236,7 +236,7 @@ public class AutoModManager extends ListenerAdapter {
     private MessageEmbed createAlertEmbed(@NotNull OffenceType.OffenceDetails offenceDetails, Member member) {
         return instance.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(instance.getLanguageManager().get("module.moderation.alert." + offenceDetails.getName().toLowerCase() + ".type"), "https://frdb.fluffici.eu", ICON_ALERT)
+                .setAuthor(instance.getLanguageManager().get("module.moderation.alert." + offenceDetails.getName().toLowerCase() + ".type"), "https://frdb.fluffici.eu", ICON_ALERT.getUrl())
                 .setThumbnail(member.getUser().getAvatarUrl())
                 .setDescription(instance.getLanguageManager().get("module.moderation.alert." + offenceDetails.getName().toLowerCase() + ".description", member.getAsMention(), offenceDetails.getThreshold(), offenceDetails.getTimeThreshold() / 1000, member.getAsMention()))
                 .setColor(Color.RED)
@@ -247,7 +247,7 @@ public class AutoModManager extends ListenerAdapter {
     private MessageEmbed createEmbed(String type, String offenceName) {
         return instance.getEmbed()
                 .simpleAuthoredEmbed()
-                .setAuthor(instance.getLanguageManager().get("module.moderation." + type + "." + offenceName + ".title"), "https://frdb.fluffici.eu", ICON_ALERT)
+                .setAuthor(instance.getLanguageManager().get("module.moderation." + type + "." + offenceName + ".title"), "https://frdb.fluffici.eu", ICON_ALERT.getUrl())
                 .setDescription(instance.getLanguageManager().get("module.moderation." + type + "." + offenceName + ".description"))
                 .setColor(Color.RED)
                 .setFooter(instance.getLanguageManager().get("module.moderation." + type + "." + offenceName + ".footer"))

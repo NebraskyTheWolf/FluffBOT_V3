@@ -56,7 +56,7 @@ public class CommandUserInfo extends FCommand {
 
             EmbedBuilder userInformation = this.getEmbed().simpleAuthoredEmbed();
             userInformation.setColor(Color.magenta);
-            userInformation.setAuthor(user.getAsMention(), "https://frdb.fluffici.eu", ICON_QUESTION_MARK);
+            userInformation.setAuthor(user.getAsMention(), "https://frdb.fluffici.eu", ICON_QUESTION_MARK.getUrl());
             userInformation.setThumbnail(user.getAvatarUrl());
 
             userInformation.addField("ID", user.getId(), false);

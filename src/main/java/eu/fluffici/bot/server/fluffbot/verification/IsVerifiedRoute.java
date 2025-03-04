@@ -28,7 +28,7 @@ import net.dv8tion.jda.api.entities.UserSnowflake;
 public class IsVerifiedRoute extends WebRoute {
 
     public IsVerifiedRoute() {
-        super("/is-verified", RouteMethod.GET);
+        super("/is-verified", RouteMethod.GET, true);
     }
 
     /**

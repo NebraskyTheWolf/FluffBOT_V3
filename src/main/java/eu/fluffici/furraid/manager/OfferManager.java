@@ -29,9 +29,9 @@ public class OfferManager {
     private final List<OfferQuota> quotas = new CopyOnWriteArrayList<>();
 
     public OfferManager() {
-        this.quotas.add(new OfferQuota(1, 15, 15, true,true,true, true,true,true, true));
-        this.quotas.add(new OfferQuota(2, 60, 60, true,true,true, true,true,true, true));
-        this.quotas.add(new OfferQuota(3, 1260, 1200, true,true,true, true,true,true, true));
+        this.quotas.add(new OfferQuota(1, 15, 15, false,false,false, true,false,true, false));
+        this.quotas.add(new OfferQuota(2, 60, 60, true,true,false, true,false,true, false));
+        this.quotas.add(new OfferQuota(3, 120, 120, true,true,true, true,true,true, true));
     }
 
     /**

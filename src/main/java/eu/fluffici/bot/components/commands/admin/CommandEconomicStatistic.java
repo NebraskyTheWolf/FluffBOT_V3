@@ -74,7 +74,7 @@ public class CommandEconomicStatistic extends Command {
             interaction.replyEmbeds(this.getEmbed()
                     .simpleAuthoredEmbed()
                     .setImage("attachment://".concat(personalStatistics.getRight().getLeft()))
-                    .setAuthor(this.getLanguageManager().get("command.economy.stats"), "https://fluffici.eu", ICON_FILE)
+                    .setAuthor(this.getLanguageManager().get("command.economy.stats"), "https://fluffici.eu", ICON_FILE.getUrl())
                     .setDescription(this.getLanguageManager().get("command.economy.stats.desc"))
                     .setTimestamp(Instant.now())
                     .build()

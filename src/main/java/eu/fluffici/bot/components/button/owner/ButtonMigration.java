@@ -203,7 +203,7 @@ public class ButtonMigration extends PersonalButton  {
 
         boolean isAnyNull = false;
         for (String key : propertyKeys) {
-            String value = FluffBOT.getInstance().getChannelConfig().getProperty(key);
+            String value = FluffBOT.getInstance().getDefaultConfig().getProperty(key);
             channelProperties.put(key, value);
             if (value == null) {
                 missingChannel.add(key);
